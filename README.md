@@ -128,6 +128,139 @@ This means that for every user in the system, there can be several tasks associa
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
+**_POST /login:_** Allows a user to log in.
+
+Request Body:
+```
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+Response:
+
+```
+{
+  "message": "Login successful",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": 1,
+    "username": "yvonne_itan",
+    "email": "user@example.com"
+  }
+}
+```
+
+
+**_POST /signup:_** Allows a new user to create an account.
+Request Body:
+```
+{
+  "username": "yvonne_itan",
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+Response:
+```
+{
+  "message": "Account created successfully",
+  "user": {
+    "id": 1,
+    "username": "yvonne_itan",
+    "email": "user@example.com"
+  }
+}
+
+```
+**_GET /tasks:_** Fetches all tasks for a logged-in user.
+
+Response:
+```
+[
+  {
+    "id": 101,
+    "title": "Buy groceries",
+    "due_date": "2024-10-20",
+    "priority": "high",
+    "status": "active",
+    "user_id": 1
+  },
+  {
+    "id": 102,
+    "title": "Finish project report",
+    "due_date": "2024-10-25",
+    "priority": "medium",
+    "status": "active",
+    "user_id": 1
+  }
+]
+```
+**_POST /tasks:_** Creates a new task.
+
+Request body:
+```
+{
+  "title": "Groceries",
+  "due_time_from": "09:00",  
+  "due_time_to": "11:00",  
+  "priority": "High",
+  "status": "active"
+}
+```
+Response:
+```
+{
+  "message": "Task created successfully",
+  "task": {
+    "id": 103,
+    "title": "Groceries",
+    "due_time_from": "09:00",
+    "due_time_to": "11:00",
+    "priority": "High",
+    "status": "active",
+    "user_id": 1
+  }
+}
+```
+**_PUT /tasks/:id:_** Edits an existing task by its ID.
+
+Request body:
+```
+{
+  "title": "Clean pantry",
+  "due_time_from": "14:30",  
+  "due_time_to": "15:00",   
+  "priority": "medium",
+  "status": "active"
+}
+```
+Response:
+```
+{
+  "message": "Task updated successfully",
+  "task": {
+    "id": 103,
+    "title": "Clean Pantry",
+    "due_time_from": "12:30",
+    "due_time_to": "13:30",
+    "priority": "medium",
+    "status": "active",
+    "user_id": 1
+  }
+}
+```
+**_DELETE /tasks/:id:_** Deletes a task by its ID.
+
+Resposense:
+```
+{
+  "message": "Task deleted successfully"
+}
+```
+
 ## Roadmap
 
 Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date. 
