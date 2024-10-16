@@ -12,6 +12,9 @@
     &__logo,&__home,&__lists,&__completed{
         background:transparent;
         font-weight:$font-bold;
+        &.active{
+            color:$active-link;
+        }
        
     }
    
