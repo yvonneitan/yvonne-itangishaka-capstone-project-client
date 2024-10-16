@@ -1,10 +1,6 @@
-import { useState } from 'react'
-import actrackLogo from './assets/react.svg'
-import './App.css'
+import './App.scss'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
       
