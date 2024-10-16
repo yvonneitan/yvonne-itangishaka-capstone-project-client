@@ -1,0 +1,28 @@
+.header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: linear-gradient(90deg, #fff7ad, #ffa9f9);
+    border-radius: 0.3125rem;
+    padding:1rem;
+    &__logo,&__home,&__lists,&__completed{
+        background:transparent;
+    }
+    &__container{
+        display:flex;
+        flex-direction: row;
+        gap:4rem;
+        background:transparent;
+    }
+    &__profile{
+        background:transparent; 
+        &-icon{
+            background: linear-gradient(90deg, #5170ff,#ff66c4);
+            color: white;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            border-radius: 2rem;
+        }
+    }
+    
+}
