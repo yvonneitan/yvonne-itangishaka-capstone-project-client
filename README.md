@@ -200,6 +200,7 @@ Response:
 ```
 **_POST /tasks:_** Creates a new task.
 
+
 Request body:
 ```
 {
@@ -265,7 +266,56 @@ Resposense:
 
 Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date. 
 
----
+
+- Week 1: Project Setup and Core Functionality
+    ```
+    - Day 1-2: Project Setup
+        - Create Client: Set up React project with routing and basic components.
+        - Create Server: Set up Express project with basic routing and placeholder responses.
+    ```
+    
+    ```
+    - Day 3: Database Setup
+        - Create Migrations: Define database migrations for users and tasks.
+        - Gather Sample Data: Collect sample task details for testing.
+        - Create Seeds: Populate the database with sample data.
+    ```
+    ```
+    - Day 4-5: User Authentication
+        Implement Signup and Login Functionality:
+        Create endpoints for user authentication (signup, login) and implement JWT for session management.
+    ```
+
+    - Day 6-7: Task Management Features
+        Task Creation and Deletion:
+        Implement task creation and deletion endpoints.
+        Task Editing:
+        Implement task editing functionality.
+        Data Persistence:
+        Ensure all tasks are saved in the database and accessible across sessions.
+Week 2: Advanced Features, Testing, and Deployment
+Day 8-9: Task Organization and Notifications
+
+Implement Task Organization:
+Allow users to categorize and sort tasks based on priority and due date.
+Implement Notifications:
+Set up a basic notification system for upcoming tasks.
+Day 10: Testing
+
+Conduct Unit and Integration Tests:
+Test all implemented features to ensure functionality and reliability.
+Day 11-12: Final Adjustments
+
+Bug Fixes:
+Address any bugs identified during testing.
+UI Improvements:
+Enhance the user interface for a better experience.
+Day 13-14: Deployment and Demo Preparation
+
+Deploy Application:
+Deploy the client and server projects to a production environment (e.g., Heroku, Vercel).
+Prepare for Demo:
+Create presentation materials and prepare for demonstration.
 
 ## Future Implementations
 Your project will be marked based on what you committed to in the above document. Here, you can list any additional features you may complete after the MVP of your application is built, or if you have extra time before the Capstone due date.
