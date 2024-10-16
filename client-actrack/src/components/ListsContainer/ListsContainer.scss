@@ -2,7 +2,7 @@
 .lists{
     width: 30%;
     border-radius: 0.3125rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
     background: $background-container-color;
     height:90vh;
     &__title{
@@ -11,5 +11,8 @@
         color:$text-grey;
         font-weight:$font-bold;
         border-radius: 0.3125rem;
+        font-size: $font-subheader;
+        padding: 1rem;
+        margin: 1rem;
     }
 }
