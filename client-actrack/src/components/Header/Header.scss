@@ -5,22 +5,30 @@
     background: linear-gradient(90deg, #fff7ad, #ffa9f9);
     border-radius: 0.3125rem;
     padding:1rem;
+    &__logo{
+        padding-top: 1rem;
+    }
     &__logo,&__home,&__lists,&__completed{
         background:transparent;
+        font-weight: 600;
+       
     }
+   
     &__container{
         display:flex;
         flex-direction: row;
         gap:4rem;
         background:transparent;
+        padding-top: 1rem;
     }
     &__profile{
         background:transparent; 
         &-icon{
             background: linear-gradient(90deg, #5170ff,#ff66c4);
             color: white;
-            padding-right: 1rem;
-            padding-left: 1rem;
+            padding:1rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
             border-radius: 2rem;
         }
     }
