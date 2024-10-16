@@ -1,10 +1,10 @@
 import React from 'react'
-import './ListsContainer/ListsContainer'
+import './ListsContainer.scss'
 
 function ListsContainer() {
   return (
     <div className='lists'>
-        <p className="list__title">
+        <p className="lists__title">
             Yvonne's AcTrack
         </p>
 

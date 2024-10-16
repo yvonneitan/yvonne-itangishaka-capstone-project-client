@@ -1,8 +1,9 @@
+@use '../../styles//variables' as*;
 .header{
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-    background: linear-gradient(90deg, #fff7ad, #ffa9f9);
+    background: $background-container-color;
     border-radius: 0.3125rem;
     padding:1rem;
     &__logo{
@@ -10,7 +11,7 @@
     }
     &__logo,&__home,&__lists,&__completed{
         background:transparent;
-        font-weight: 600;
+        font-weight:$font-bold;
        
     }
    
@@ -24,13 +25,13 @@
     &__profile{
         background:transparent; 
         &-icon{
-            background: linear-gradient(90deg, #5170ff,#ff66c4);
-            color: white;
+            background: $background-button-color;
+            color: $white;
             padding:1rem;
             padding-right: 2rem;
             padding-left: 2rem;
             border-radius: 2rem;
-            font-weight: 600;
+            font-weight: $font-bold;
         }
     }
     
