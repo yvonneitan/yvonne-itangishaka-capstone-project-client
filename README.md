@@ -1,12 +1,15 @@
 # Project Title
 
+AcTrack App
+
 ## Overview
 
-What is your app? Give a brief description in a couple of sentences.
+The To-Do Web App is a task management tool that allows users to create, manage, and organize their short and long term tasks efficiently. It provides a user-friendly interface to help users prioritize their daily activities and improve productivity.
 
 ### Problem Space
 
 Why is your app needed? Give any background information around any pain points or other reasons.
+
 
 ### User Profile
 
