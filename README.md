@@ -1,6 +1,6 @@
 # Project Title
 
-AcTrack App
+AcTrack
 
 ## Overview
 
