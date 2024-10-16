@@ -291,7 +291,9 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
         - Task Editing: Implement task editing functionality.
         - Data Persistence: Ensure all tasks are saved in the database and accessible across sessions.
     ```
+
 - Week 2: Advanced Features, Testing, and Deployment
+
     ```
     - Day 8-9: Task Organization and Notifications
         - Implement Task Organization:
@@ -311,9 +313,16 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 
     ```
     - Day 13-14: Deployment and Demo Preparation
-        - Deploy Application: Deploy the client and server projects to a production environment (e.g., Heroku, Vercel).
+        - Deploy Application: Deploy the client and server projects to a production environment (Netlify, Heroku, Vercel).
         - Prepare for Demo: Create presentation materials and prepare for demonstration.
     ```
 ## Future Implementations
-Your project will be marked based on what you committed to in the above document. Here, you can list any additional features you may complete after the MVP of your application is built, or if you have extra time before the Capstone due date.
+
+
+- Intergrade tasks into calender
+- Set up reminders
+- Implementt log in to completion
+- forgot password Functionality
+- Expand to groups tasks and collaborations
+
 
