@@ -1,10 +1,11 @@
 import React from 'react'
 import './HomePage.scss'
+import ListsContainer from '../../components/ListsContainer/ListsContainer'
 
 function HomePage() {
   return (
     <div>
-        <h1>This is the Home Page</h1>
+
       
     </div>
   )
