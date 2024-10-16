@@ -36,35 +36,47 @@ List the functionality that your app will include. These can be written as user 
 
 List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
 
-- Frontend: React, HTML, CSS, Sass
+- **_Frontend:_** React, HTML, CSS, Sass
     - Frontend Libraries:
         - react
         - react-router
         - axios
-- Backend: Node.js, Express
+- **_Backend:_** Node.js, Express
     - Backend Libraries:
         - Knex
         - Express
-- Database: MySQL
-- State Management: React Hooks
-- API: Axios for making HTTP requests
+- **_Database:_** MySQL
+- **_State Management:_** React Hooks
+- **_API:_** Axios for making HTTP requests
 
 ### APIs
 
-- Task Management API: For CRUD operations on tasks.
-- Authentication API: For user sign-up and login processes.
+- **_Task Management API:_** For CRUD operations on tasks.
+- **_Authentication API:_** For user sign-up and login processes.
 
 
 ### Sitemap
 
-List the pages of your app with brief descriptions. You can show this visually, or write it out.
+- **_Login/Signup:_** User authentication pages.
+![Login/Signup Page](login-page.png)
+
+- **_Task Dashboard_** Main interface for managing tasks.  
+  ![Task Dashboard](home-page.png)
+
+- **_Settings_** User account settings.  
+![Settings Page with user's name icon](add-list.png)
+
+- **_Task Details_** Detailed view for individual tasks.  
+  ![Tasks Lists](lists-page.png)
+
+- **_Home_** Overview of scheduled tasks.  
+  ![Home Page Lists](home-lists.png)
+
+  - **_Completed Tasks_** Detailed view for complted individual tasks from all lists.  
+  ![Complted Tasks List](completed-page.png)
 
 
-- Home: Overview of tasks.
-- Login/Signup: User authentication pages.
-- Task Dashboard: Main interface for managing tasks.
-- Task Details: Detailed view for individual tasks.
-- Settings: User account settings.
+
 
 ### Mockups
 My page is divides into;
