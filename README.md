@@ -72,6 +72,10 @@ List technologies that will be used in your app, including any libraries to save
 - **_Home_** Overview of scheduled tasks.  
   ![Home Page Lists](home-lists.png)
 
+
+- **_Edit_** Overview of scheduled with edit options to change time or move to a different list.  
+  ![Home Page Lists](edit-page.png)
+
   - **_Completed Tasks_** Detailed view for complted individual tasks from all lists.  
   ![Complted Tasks List](completed-page.png)
 
@@ -79,12 +83,12 @@ List technologies that will be used in your app, including any libraries to save
 
 
 ### Mockups
-My page is divides into;
+My page is divides into: 
 
-#### Log In Page
-#### Home Page
-#### Lists Page
-#### Completed Page
+#### _Log In Page_
+#### _Home Page_
+#### _Lists Page_
+#### _Completed Page_
 [https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel]
 
 ### Data
