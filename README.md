@@ -89,11 +89,40 @@ My page is divides into:
 #### _Home Page_
 #### _Lists Page_
 #### _Completed Page_
+
+- You can View the Mockups here:
+
 [https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel]
 
 ### Data
 
-Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out. 
+**_Users:_** 
+
+- Each user has the following properties:
+    - id: A unique identifier for the user.
+    - username: The name the user goes by within the application.
+    - email: The user's email, used for authentication.
+    - password: A hashed version of the user's password for account security.
+- _Relationship:_ A user can have multiple tasks associated with them.
+
+**_Tasks:_**
+
+- Each task has the following properties:
+    - id: A unique identifier for the task.
+    - title: The name or description of the task.
+    - due_time: The time by which the task should be completed.
+    - priority: The importance level of the task (high, medium, low).
+    - status: The current state of the task (e.g., active, completed).
+    - user_id: A reference to the user who created the task (foreign key to Users table).
+- _Relationship:_ Each task is associated with one user, but a user can have many tasks.
+
+
+**_Relationships_**
+
+_One-to-Many Relationship:_
+
+A user can have many tasks.
+This means that for every user in the system, there can be several tasks associated with that user.
 
 ### Endpoints
 
