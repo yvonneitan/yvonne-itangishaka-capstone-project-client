@@ -34,9 +34,13 @@ List any external sources of data that will be used in your app.
 List the pages of your app with brief descriptions. You can show this visually, or write it out.
 
 ### Mockups
+My page is divides into;
 
-Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.
-[(https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel)]
+#### Log In Page
+#### Home Page
+#### Lists Page
+#### Completed Page
+[https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel]
 
 ### Data
 
