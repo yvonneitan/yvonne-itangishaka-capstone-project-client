@@ -1,6 +1,6 @@
 # Project Title
 
-**AcTrack**
+ ### *AcTrack*
 
 ## Overview
 
@@ -19,14 +19,14 @@ In today's fast-paced world, individuals often struggle to keep track of their t
 
 List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
-- User Authentication: Users can sign up, log in, and manage their accounts.
-- Task Creation: Users can add new tasks with details such as task title and due date.
-- Task Editing: Users can edit existing tasks to update details or change statuses.
-- Task Deletion: Users can remove tasks they no longer need from the lists.
-- Task Organization: Users can categorize tasks by priority or status (active and completed).
-- Sorting: Users can sort tasks based on alphabettical order and sort them by due date or priority.
-- Notifications: Users receive reminders for upcoming tasks.
-- Data Persistence: All tasks are saved in a database to ensure they are accessible across sessions.
+- _User Authentication:_ Users can sign up, log in, and manage their accounts.
+- _Task Creation:_ Users can add new tasks with details such as task title and due date.
+- _Task Editing:_ Users can edit existing tasks to update details or change statuses.
+- _Task Deletion:_ Users can remove tasks they no longer need from the lists.
+- _Task Organization:_ Users can categorize tasks by priority or status (active and completed).
+- _Sorting: Users can sort tasks based on alphabettical order and sort them by due date or priority.
+- _Notifications: Users receive reminders for upcoming tasks.
+- _Data Persistence:_ All tasks are saved in a database to ensure they are accessible across sessions.
 
 
 
