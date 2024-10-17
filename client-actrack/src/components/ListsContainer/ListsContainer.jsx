@@ -1,7 +1,7 @@
 import React from 'react'
 import './ListsContainer.scss'
 
-function ListsContainer() {
+function ListsContainer(className) {
   return (
     <div className='lists'>
         <p className="lists__title">
