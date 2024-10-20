@@ -36,12 +36,12 @@ function ListsContainer() {
       }
     };
 
-    getUser(); // Initiate the user fetching
+    getUser(); 
   }, []);
 
   return (
     <aside className="sidebar">
-      {/* Use the fetched user's name, or "Yvonne AcTrack" if not loaded yet */}
+    
       <div className="sidebar-title">{user ? `${user.username} AcTrack` : 'Yvonne AcTrack'}</div>
       {taskLists.length === 0 ? (
         <div>No task lists available.</div>
