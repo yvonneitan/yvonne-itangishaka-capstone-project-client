@@ -6,12 +6,20 @@ import HomePage from './pages/HomePage/HomePage';
 import ListsPage from './pages/ListsPage/ListsPage';
 import CompletedPage from'./pages/CompletedPage/CompletedPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import GreetingsContainer from './components/GreetingsContainer/GreetingsContainer';
+import MiddleContainer from './components/MiddleContainer/MiddleContainer';
+import RightSideContainer from './components/RightSideContainer/RightSideContainer';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <div className='containers'>
       <ListsContainer/> 
+      {/* <GreetingsContainer/> */}
+      <MiddleContainer/>
+      {/* <RightSideContainer/> */}
+      </div>
       <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/lists" element={<ListsPage />} />

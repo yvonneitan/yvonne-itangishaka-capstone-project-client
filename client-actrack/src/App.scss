@@ -6,3 +6,8 @@
   font-family:$primary-font;
   padding: 0.25rem;
 }
+
+.containers{
+  display:flex;
+  flex-direction: row;
+}
