@@ -5,7 +5,7 @@ function MiddleContainer() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const getUser = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/users/1'); 
         if (!response.ok) {
@@ -18,7 +18,7 @@ function MiddleContainer() {
       }
     };
 
-    const fetchTasks = async () => {
+    const getTasks = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/tasks/active'); 
         if (!response.ok) {
@@ -31,8 +31,8 @@ function MiddleContainer() {
       }
     };
 
-    fetchUser();
-    fetchTasks();
+    getUser();
+    getTasks();
   }, []);
 
   return (

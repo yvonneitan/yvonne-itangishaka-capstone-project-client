@@ -1,42 +1,60 @@
-import React from 'react'
-import './ListsContainer.scss'
+import React, { useEffect, useState } from 'react';
+import './ListsContainer.scss';
 
-function ListsContainer(className) {
-  // return (
-  //   <div className='lists'>
-  //       <p className="lists__title">
-  //           Yvonne's AcTrack
-  //       </p>
+function ListsContainer() {
+  const [taskLists, setTaskLists] = useState([]);
+  const [user, setUser] = useState(null);
 
-      
-  //   </div>
-  // )
-  const taskLists = [
-    { name: 'Home Tasks', count: 6 },
-    { name: 'Completed', count: 5 },
-    { name: 'Personal', count: 7 },
-    { name: 'Work', count: 9 },
-    { name: 'List of Books', count: 20 },
-    { name: 'Diet', count: 6 },
-    { name: 'Road Trips list', count: 20 },
-    { name: 'List of Movies', count: 8 }
-  ];
+  useEffect(() => {
+    const getTaskLists = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/task-lists'); 
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setTaskLists(data);
+      } catch (error) {
+        console.error('Error fetching task lists:', error);
+      }
+    };
+
+    const getUser = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/users/1'); 
+        if (!response.ok) {
+          throw new Error('Network response for user was not ok');
+        }
+        const userData = await response.json();
+        setUser(userData);
+      } catch (error) {
+        console.error('Error getting user:', error);
+      }
+    };
+
+    getUser();
+    getTaskLists();
+  }, []);
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-title">Yvonne’s AcTrack</div>
-      <ul className="task-lists">
-        {taskLists.map((list, index) => (
-          <li key={index} className="task-list">
-            <button>{list.name} <span>{list.count}</span></button>
-          </li>
-        ))}
-      </ul>
+      <div className="sidebar-title">{user ? user.username : 'Loading...'} AcTrack</div>
+      {taskLists.length === 0 ? (
+        <div>No task lists available.</div>
+      ) : (
+        <ul className="task-lists">
+          {taskLists.map((list) => (
+            <li key={list.id} className="task-list"> 
+              <button>
+                {list.name} <span>{list.count}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
       <button className="add-list-btn">+ Create new List ⌘L</button>
     </aside>
   );
-};
+}
 
-
-
-export default ListsContainer
+export default ListsContainer;
