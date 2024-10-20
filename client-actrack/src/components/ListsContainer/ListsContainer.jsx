@@ -6,9 +6,26 @@ function ListsContainer() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getTaskLists = async () => {
+    // Function to get the user
+    const getUser = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/task-lists'); 
+        const response = await fetch(`http://localhost:8080/api/users/1`); // Fetching the user
+        if (!response.ok) {
+          throw new Error('Network response for user was not ok');
+        }
+        const userData = await response.json();
+        setUser(userData);
+        // After setting the user, fetch the task lists for this user
+        await getTaskLists(userData.id); // Pass the user ID
+      } catch (error) {
+        console.error('Error getting user:', error);
+      }
+    };
+
+    // Function to get task lists for the specified user ID
+    const getTaskLists = async (userId) => {
+      try {
+        const response = await fetch(`http://localhost:8080/api/lists/task-lists?userId=${userId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -19,26 +36,13 @@ function ListsContainer() {
       }
     };
 
-    const getUser = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/api/users/1'); 
-        if (!response.ok) {
-          throw new Error('Network response for user was not ok');
-        }
-        const userData = await response.json();
-        setUser(userData);
-      } catch (error) {
-        console.error('Error getting user:', error);
-      }
-    };
-
-    getUser();
-    getTaskLists();
+    getUser(); // Initiate the user fetching
   }, []);
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-title">{user ? user.username : 'Loading...'} AcTrack</div>
+      {/* Use the fetched user's name, or "Yvonne AcTrack" if not loaded yet */}
+      <div className="sidebar-title">{user ? `${user.username} AcTrack` : 'Yvonne AcTrack'}</div>
       {taskLists.length === 0 ? (
         <div>No task lists available.</div>
       ) : (
