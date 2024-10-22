@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './ListsContainer.scss';
+import ListsButton from '../ListsButton/ListsButton'
 
 function ListsContainer() {
   const [taskLists, setTaskLists] = useState([]);
@@ -49,9 +50,10 @@ function ListsContainer() {
         <ul className="sidebar__lists">
           {taskLists.map((list) => (
             <li key={list.id} className="sidebar__lists--item"> 
-              <button className="sidebar__lists--button">
+              {/* <button className="sidebar__lists--button">
                 {list.name}
-              </button>
+              </button> */}
+                <ListsButton listName={list.name} />
               <span className="sidebar__lists--count">{list.count}</span>
             </li>
           ))}
