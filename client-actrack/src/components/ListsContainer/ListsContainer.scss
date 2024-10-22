@@ -1,6 +1,6 @@
 @use '../../styles/variables' as*;
 .sidebar{
-    width: 30%;
+    width: 40%;
     border-radius: 0.3125rem;
     margin-top: 1rem;
     background: $background-container-color;
@@ -13,7 +13,9 @@
         border-radius: 0.3125rem;
         font-size: $font-subheader;
         padding: 1rem;
-        margin: 1rem;
+        margin-right: 1rem;
+        margin-left:1rem;
+        margin-top:1rem;
     }
     &__lists{
         display: flex;
@@ -34,7 +36,11 @@
         padding-right: 1rem;
         padding-left:1rem;
         margin: 1rem;
-        width:10rem
+        width:12rem;
+        margin: 0;
+        margin-right: 1rem;
+        margin-left:1rem;
+        // margin-top:1rem;
         }
         &--count{
             background-color:$background-count-button-color;
@@ -42,20 +48,21 @@
             font-weight:$font-bold;
             border-radius: 0.3125rem;
             font-size: $font-paragraph;
-            // padding-right: 0.5rem;
-            // padding-left:0.5rem;
+            padding-right: 0.5rem;
+            padding-left:0.5rem;
             }
     }
     &__new{
+        margin-left: 0;
         &--btn{
-        background:$border-grey;
+        background:$background-count-button-color;
         border:none;
         color:$text-black;
         font-weight:$font-bold;
         border-radius:25px;
         font-size: $font-paragraph;
-        padding-right: 1rem;
-        padding-left:1rem;
+        padding-right: 2rem;
+        padding-left:2rem;
         margin: 1rem;
         }
     }

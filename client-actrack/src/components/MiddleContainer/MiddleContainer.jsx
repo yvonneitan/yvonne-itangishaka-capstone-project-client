@@ -37,7 +37,7 @@ function MiddleContainer() {
 
   return (
     <main className="main-content">
-      {user && <h2>Good morning, {user.username}</h2>} 
+      {user && <h2>Good day, {user.username}</h2>} 
       <p>Today, {new Date().toLocaleDateString()}</p> 
       <div className="task-container">
         {tasks.map((task, index) => (
