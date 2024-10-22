@@ -5,8 +5,17 @@
     flex-direction: row;
     height: min-content;
     width: 20%;
-    border: 0.0625rem solid $text-black;
+    border: 0.0625rem solid $text-grey;
     border-radius: 0.3125rem;
     background-color: $white;
-    position: relative;
+    justify-content: space-between;
+    margin-top: 1rem;
+    // position: relative;
+    &__title{
+        background-color: transparent;
+    }
+    &__menu{
+        background-color: transparent;
+    }
+
 }
