@@ -40,24 +40,25 @@ function ListsContainer() {
   }, []);
 
   return (
-    <aside className="sidebar">
+    <div className="sidebar">
     
-      <div className="sidebar-title">{user ? `${user.username} AcTrack` : 'Yvonne AcTrack'}</div>
+      <div className="sidebar__title">{user ? `${user.username} AcTrack` : 'Your AcTrack'}</div>
       {taskLists.length === 0 ? (
         <div>No task lists available.</div>
       ) : (
-        <ul className="task-lists">
+        <ul className="sidebar__lists">
           {taskLists.map((list) => (
-            <li key={list.id} className="task-list"> 
-              <button>
-                {list.name} <span>{list.count}</span>
+            <li key={list.id} className="sidebar__lists--item"> 
+              <button className="sidebar__lists--button">
+                {list.name}
               </button>
+              <span className="sidebar__lists--count">{list.count}</span>
             </li>
           ))}
         </ul>
       )}
-      <button className="add-list-btn">+ Create new List ⌘L</button>
-    </aside>
+      <button className="sidebar__new--btn">+ Create new List ⌘L</button>
+    </div>
   );
 }
 
