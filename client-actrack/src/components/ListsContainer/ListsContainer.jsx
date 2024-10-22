@@ -45,7 +45,8 @@ function ListsContainer() {
     
       <div className="sidebar__title">{user ? `${user.username} AcTrack` : 'Your AcTrack'}</div>
       {taskLists.length === 0 ? (
-        <div>No task lists available.</div>
+        <div className="sidebar__no-list">No task lists available.</div>
+
       ) : (
         <ul className="sidebar__lists">
           {taskLists.map((list) => (
