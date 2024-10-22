@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import "./MiddleContainer.scss"
 function MiddleContainer() {
   const [user, setUser] = useState(null);
   const [tasks, setTasks] = useState([]);
@@ -37,19 +37,19 @@ function MiddleContainer() {
 
   return (
     <main className="main-content">
-      {user && <h2>Good day, {user.username}</h2>} 
-      <p>Today, {new Date().toLocaleDateString()}</p> 
-      <div className="task-container">
-        {tasks.map((task, index) => (
-          <div key={index} className="task">
-            <input type="checkbox" id={`task-${index}`} />
-            <label htmlFor={`task-${index}`}>{task.task}</label>
-            <span className="task-time">{task.start_time} - {task.end_time}</span>
-          </div>
-        ))}
-      </div>
-      <button className="add-task-btn">+ Add new Task ⌘N</button>
-    </main>
+    {user && <h2 className="main-content__greeting">Good day, {user.username}</h2>} 
+    <p className="main-content__date">Today, {new Date().toLocaleDateString()}</p> 
+    <div className="main-content__task-container">
+      {tasks.map((task, index) => (
+        <div key={index} className="main-content__task">
+          <input type="checkbox" id={`task-${index}`} className="main-content__task--checkbox" />
+          <label htmlFor={`task-${index}`} className="main-content__task--label">{task.task}</label>
+          <span className="main-content__task--time">{task.start_time} - {task.end_time}</span>
+        </div>
+      ))}
+    </div>
+    <button className="main-content__add--task">+ Add new Task ⌘N</button>
+  </main>
   );
 }
 
