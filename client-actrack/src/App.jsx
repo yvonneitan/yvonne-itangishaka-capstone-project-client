@@ -19,6 +19,7 @@ function App() {
       {/* <GreetingsContainer/> */}
       <MiddleContainer/>
       {/* <RightSideContainer/> */}
+      <RightSideContainer/>
       </div>
       <Routes>
       <Route path="/" element={<HomePage />} />
