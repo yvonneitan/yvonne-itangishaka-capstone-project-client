@@ -110,42 +110,42 @@ function ListsContainer() {
           <div className="sidebar__no-list">No task lists available.</div>
         ) : (
           <ul className="sidebar__lists">
-    {taskLists.map((list) => (
-        <li key={list.id} className="sidebar__lists--item">
-            <button
-                className="sidebar__lists--button"
-                onClick={() => handleListClick(list.name)} 
-            >
-                {list.name}
-            </button>
-            <span className="sidebar__lists--count">{list.count || 0}</span>
-        </li>
-    ))}
-</ul>
+            {taskLists.map((list) => (
+                <li key={list.id} className="sidebar__lists--item">
+                    <button
+                        className="sidebar__lists--button"
+                        onClick={() => handleListClick(list.name)} 
+                    >
+                        {list.name}
+                    </button>
+                    <span className="sidebar__lists--count">{list.count || 0}</span>
+                </li>
+              ))}
+          </ul>
         )}
 
         {showInput && (
           <div className="create__box">
-          <div className="sidebar__create">
-            <input 
-              type="text" 
-              value={newListName} 
-              onChange={handleNewListChange} 
-              placeholder="New List Name" 
-              className="sidebar__create--list-input"
-            />
-            <button 
-              className="sidebar__create--list-btn" 
-              onClick={handleCreateNewList}
-            >
-              Add
-            </button>
-          </div>
-          {inputError && 
-            <div className="sidebar__create--error-message">
-                List name cannot be empty
-              </div>}
+            <div className="sidebar__create">
+              <input 
+                type="text" 
+                value={newListName} 
+                onChange={handleNewListChange} 
+                placeholder="New List Name" 
+                className="sidebar__create--list-input"
+              />
+              <button 
+                className="sidebar__create--list-btn" 
+                onClick={handleCreateNewList}
+              >
+                Add
+              </button>
             </div>
+            {inputError && 
+              <div className="sidebar__create--error-message">
+                  List name cannot be Empty!
+                </div>}
+          </div>
         )}
         
         <button 
