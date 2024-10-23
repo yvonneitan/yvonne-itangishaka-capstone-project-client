@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
-import ListsContainer from './ListsContainer/ListsContainer';
-import MiddleContainer from './MiddleContainer/MiddleContainer';
+import React from 'react';
+import './TaskManager.scss'; 
 
-function TaskManager() {
-  const [selectedListId, setSelectedListId] = useState(null);
-
-  const handleListSelect = (listId) => {
-    setSelectedListId(listId);
-  };
+function TaskManager({ isOpen, onClose, children }) {
+  if (!isOpen) return null; 
 
   return (
-    <div className="task-manager">
-      <ListsContainer onSelectList={handleListSelect} />
-      <MiddleContainer selectedListId={selectedListId} />
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>✖</button>
+        {children}
+      </div>
     </div>
   );
-}
+};
 
 export default TaskManager;
