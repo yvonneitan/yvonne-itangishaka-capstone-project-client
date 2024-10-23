@@ -61,7 +61,7 @@ function ListsContainer() {
 
   const handleCreateNewList = async () => {
     if (!newListName.trim()) {
-        setInputError("Please enter a valid list name.");
+        setInputError(true);
         return;
     }
 
@@ -125,6 +125,7 @@ function ListsContainer() {
         )}
 
         {showInput && (
+          <div className="create__box">
           <div className="sidebar__create">
             <input 
               type="text" 
@@ -133,7 +134,6 @@ function ListsContainer() {
               placeholder="New List Name" 
               className="sidebar__create--list-input"
             />
-            {inputError && <div className="error-message">{inputError}</div>} 
             <button 
               className="sidebar__create--list-btn" 
               onClick={handleCreateNewList}
@@ -141,6 +141,11 @@ function ListsContainer() {
               Add
             </button>
           </div>
+          {inputError && 
+            <div className="sidebar__create--error-message">
+                List name cannot be empty
+              </div>}
+            </div>
         )}
         
         <button 
