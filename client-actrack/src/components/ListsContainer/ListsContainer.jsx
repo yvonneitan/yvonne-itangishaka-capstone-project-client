@@ -125,17 +125,17 @@ function ListsContainer() {
         )}
 
         {showInput && (
-          <div>
+          <div className="sidebar__create">
             <input 
               type="text" 
               value={newListName} 
               onChange={handleNewListChange} 
               placeholder="New List Name" 
-              className="sidebar__new--input"
+              className="sidebar__create--list-input"
             />
             {inputError && <div className="error-message">{inputError}</div>} 
             <button 
-              className="sidebar__create--btn" 
+              className="sidebar__create--list-btn" 
               onClick={handleCreateNewList}
             >
               Add
