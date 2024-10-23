@@ -1,0 +1,41 @@
+@use '../../styles//variables' as*;
+.header{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: $background-container-color;
+    border-radius: 0.3125rem;
+    padding:1rem;
+    &__logo{
+        padding-top: 1rem;
+    }
+    &__logo,&__home,&__lists,&__completed{
+        background:transparent;
+        font-weight:$font-bold;
+        &.active{
+            color:$active-link;
+        }
+       
+    }
+   
+    &__container{
+        display:flex;
+        flex-direction: row;
+        gap:4rem;
+        background:transparent;
+        padding-top: 1rem;
+    }
+    &__profile{
+        background:transparent; 
+        &-icon{
+            background: $background-log-button-color;
+            color: $white;
+            padding:1rem;
+            padding-right: 2rem;
+            padding-left: 2rem;
+            border-radius: 2rem;
+            font-weight: $font-bold;
+        }
+    }
+    
+}

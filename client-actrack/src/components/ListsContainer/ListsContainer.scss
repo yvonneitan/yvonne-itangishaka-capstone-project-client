@@ -1,0 +1,85 @@
+@use '../../styles/variables' as*;
+.sidebar{
+    width: 30%;
+    border-radius: 0.3125rem;
+    margin-top: 1rem;
+    background: $background-container-color;
+    height:90vh;
+    &__title{
+        background:$white;
+        border:0.0625rem solid $border-grey;
+        color:$text-grey;
+        font-weight:$font-bold;
+        border-radius: 0.3125rem;
+        font-size: $font-subheader;
+        padding: 1rem;
+        margin-right: 1rem;
+        margin-left:1rem;
+        margin-top:1rem;
+    }
+    &__lists{
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        list-style-type: none;
+        &--item{
+            background-color: transparent;
+            text-decoration: none;
+        }
+        // &--button{
+        // background:$white;
+        // border:none;
+        // color:$text-grey;
+        // font-weight:$font-bold;
+        // border-radius: 0.3125rem;
+        // font-size: $font-paragraph;
+        // padding-right: 1rem;
+        // padding-left:1rem;
+        // margin: 1rem;
+        // width:12rem;
+        // margin: 0;
+        // margin-right: 1rem;
+        // margin-left:1rem;
+        // // margin-top:1rem;
+        // }
+        &__no-list{
+            background:$white;
+            border:none;
+            color:$text-grey;
+            font-weight:$font-bold;
+            border-radius: 0.3125rem;
+            font-size: $font-paragraph;
+            padding-right: 1rem;
+            padding-left:1rem;
+            margin: 1rem;
+            width:12rem;
+            margin: 0;
+            margin-right: 1rem;
+            margin-left:1rem;
+            margin-top:1rem;
+            }
+        &--count{
+            background-color:$background-count-button-color;
+            color:$text-grey;
+            font-weight:$font-bold;
+            border-radius: 0.3125rem;
+            font-size: $font-paragraph;
+            padding-right: 0.5rem;
+            padding-left:0.5rem;
+            }
+    }
+    &__new{
+        margin-left: 0;
+        &--btn{
+        background:$background-count-button-color;
+        border:none;
+        color:$text-black;
+        font-weight:$font-bold;
+        border-radius:25px;
+        font-size: $font-paragraph;
+        padding-right: 2rem;
+        padding-left:2rem;
+        margin: 1rem;
+        }
+    }
+}
