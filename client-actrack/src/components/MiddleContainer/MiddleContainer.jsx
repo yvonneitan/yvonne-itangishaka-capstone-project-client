@@ -82,7 +82,11 @@ function MiddleContainer({ selectedList }) {
             </div>
           ))
         ) : (
-          <div>Select a list to see your tasks.</div>
+          selectedList ? (
+            <div>Your Task List is Empty!</div>
+          ) : (
+            <div>Select a list to see your tasks.</div>
+          )
         )}
       </div>
       <button className="main-content__add--task">+ Add new Task ⌘N</button>
