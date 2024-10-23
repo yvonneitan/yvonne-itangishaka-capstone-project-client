@@ -17,7 +17,7 @@ function App() {
       <div className='containers'>
       <ListsContainer/> 
       {/* <GreetingsContainer/> */}
-      <MiddleContainer/>
+      {/* <MiddleContainer/> */}
       {/* <RightSideContainer/> */}
       <RightSideContainer/>
       </div>

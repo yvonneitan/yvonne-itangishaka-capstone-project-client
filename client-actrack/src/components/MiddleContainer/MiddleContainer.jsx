@@ -27,6 +27,7 @@ function MiddleContainer({ selectedList }) {
   useEffect(() => {
     console.log("Fetching tasks for list:", selectedList);
     if (selectedList) {
+      setTasks([]);
       const getTasks = async () => {
         try {
           const response = await fetch(`http://localhost:8080/api/tasks?listName=${selectedList}`);
