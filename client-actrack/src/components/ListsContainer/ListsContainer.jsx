@@ -9,7 +9,9 @@ function ListsContainer() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedList, setSelectedList] = useState(""); 
-  const [tasks, setTasks] = useState([]); 
+  const [newListName, setNewListName] = useState(""); 
+  const [inputError, setInputError] = useState(""); 
+  const [showInput, setShowInput] = useState(false); 
 
   useEffect(() => {
     const getUser = async () => {
@@ -52,6 +54,44 @@ function ListsContainer() {
     setSelectedList(listName); 
   };
 
+  const handleNewListChange = (e) => {
+    setNewListName(e.target.value); 
+    setInputError(""); 
+  };
+
+  const handleCreateNewList = async () => {
+    if (!newListName.trim()) {
+        setInputError("Please enter a valid list name.");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:8080/api/lists/task-lists", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name: newListName, userId: user.id }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to create new list.");
+        }
+
+        const newList = await response.json();
+        setTaskLists((prevLists) => [...prevLists, newList]); 
+        setNewListName("");
+        setInputError("");
+        setShowInput(false); 
+    } catch (error) {
+        console.error("Error creating new list:", error);
+    }
+};
+
+  const handleShowInput = () => {
+    setShowInput(true);
+  };
+
   if (loading) {
     return <div className="sidebar">Loading...</div>;
   }
@@ -70,20 +110,45 @@ function ListsContainer() {
           <div className="sidebar__no-list">No task lists available.</div>
         ) : (
           <ul className="sidebar__lists">
-            {taskLists.map((list) => (
-              <li key={list.id} className="sidebar__lists--item">
-                <button
-                  className="sidebar__lists--button"
-                  onClick={() => handleListClick(list.name)} 
-                >
-                  {list.name}
-                </button>
-                <span className="sidebar__lists--count">{list.count || 0}</span>
-              </li>
-            ))}
-          </ul>
+    {taskLists.map((list) => (
+        <li key={list.id} className="sidebar__lists--item">
+            <button
+                className="sidebar__lists--button"
+                onClick={() => handleListClick(list.name)} 
+            >
+                {list.name}
+            </button>
+            <span className="sidebar__lists--count">{list.count || 0}</span>
+        </li>
+    ))}
+</ul>
         )}
-        <button className="sidebar__new--btn">+ Create new List ⌘L</button>
+
+        {showInput && (
+          <div>
+            <input 
+              type="text" 
+              value={newListName} 
+              onChange={handleNewListChange} 
+              placeholder="New List Name" 
+              className="sidebar__new--input"
+            />
+            {inputError && <div className="error-message">{inputError}</div>} 
+            <button 
+              className="sidebar__create--btn" 
+              onClick={handleCreateNewList}
+            >
+              Add
+            </button>
+          </div>
+        )}
+        
+        <button 
+          className="sidebar__new--btn" 
+          onClick={handleShowInput}
+        >
+          + Create new List ⌘L
+        </button>
       </div>
       <MiddleContainer selectedList={selectedList} />
     </>
@@ -91,3 +156,4 @@ function ListsContainer() {
 }
 
 export default ListsContainer;
+
