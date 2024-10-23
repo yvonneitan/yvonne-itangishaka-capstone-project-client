@@ -46,6 +46,8 @@ function MiddleContainer({ selectedList }) {
   return (
     <main className="main-content">
       {user && <h2 className="main-content__greeting">Good day, {user.username}</h2>}
+      <p className="main-content__date">Today, {new Date().toLocaleDateString()}</p> 
+
       <div className="main-content__task-container">
         {tasks.length > 0 ? (
           tasks.map((task) => (
@@ -58,7 +60,7 @@ function MiddleContainer({ selectedList }) {
             </div>
           ))
         ) : (
-          <div>No tasks available for "{selectedList}".</div>
+          <div>Select a list to see your tasks.</div>
         )}
       </div>
       <button className="main-content__add--task">+ Add new Task ⌘N</button>

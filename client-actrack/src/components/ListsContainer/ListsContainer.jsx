@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./ListsContainer.scss";
 import ListsButton from "../ListsButton/ListsButton"; 
+import MiddleContainer from "../MiddleContainer/MiddleContainer";
 
 function ListsContainer() {
   const [taskLists, setTaskLists] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedList, setSelectedList] = useState("");
+  const [selectedList, setSelectedList] = useState(""); 
   const [tasks, setTasks] = useState([]); 
 
   useEffect(() => {
@@ -47,29 +48,8 @@ function ListsContainer() {
     getUser();
   }, []);
 
-  useEffect(() => {
-    const getTasks = async () => {
-      if (selectedList) {
-        try {
-          const response = await fetch(`http://localhost:8080/api/tasks?listName=${selectedList}`);
-          if (!response.ok) {
-            throw new Error("Network response for tasks was not ok");
-          }
-          const tasksData = await response.json();
-          setTasks(tasksData);
-        } catch (error) {
-          setError("Failed to fetch tasks.");
-          console.error("Error fetching tasks:", error);
-        }
-      }
-    };
-
-    getTasks();
-  }, [selectedList]); // Fetch tasks when selectedList changes
-
   const handleListClick = (listName) => {
-    // console.log("Selected List:", listName);
-    setSelectedList(listName);
+    setSelectedList(listName); 
   };
 
   if (loading) {
@@ -81,60 +61,33 @@ function ListsContainer() {
   }
 
   return (
-    <div className="sidebar">
-      <div className="sidebar__title">
-        {user ? `${user.username} AcTrack` : "Your AcTrack"}
-      </div>
-      {taskLists.length === 0 ? (
-        <div className="sidebar__no-list">No task lists available.</div>
-      ) : (
-        <ul className="sidebar__lists">
-          {taskLists.map((list) => (
-            <li key={list.id} className="sidebar__lists--item">
-              <button
-                className="sidebar__lists--button"
-                onClick={() => handleListClick(list.name)}
-              >
-                {list.name}
-              </button>
-              <span className="sidebar__lists--count">{list.count || 0}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-      <button className="sidebar__new--btn">+ Create new List ⌘L</button>
-      
-      {/* Display tasks for the selected list */}
-      {selectedList && (
-        <div className="sidebar__tasks">
-          {/* <h3>Tasks for "{selectedList}"</h3> */}
-          {tasks.length > 0 ? (
-            <ul className="sidebar__tasks--list">
-              {tasks.map((task) => (
-                <li key={task.id} className="sidebar__tasks--item">
-                  <input
-                    type="checkbox"
-                    id={`task-${task.id}`}
-                    className="sidebar__tasks--checkbox"
-                    defaultChecked={task.status === "completed"}
-                  />
-                  <label htmlFor={`task-${task.id}`} className="sidebar__tasks--label">
-                    {task.task}
-                  </label>
-                  <span className="sidebar__tasks--time">
-                    {new Date(task.start_time).toLocaleString()} - {new Date(task.end_time).toLocaleString()}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div>No tasks available for "{selectedList}".</div>
-          )}
+    <>
+      <div className="sidebar">
+        <div className="sidebar__title">
+          {user ? `${user.username} AcTrack` : "Your AcTrack"}
         </div>
-      )}
-    </div>
+        {taskLists.length === 0 ? (
+          <div className="sidebar__no-list">No task lists available.</div>
+        ) : (
+          <ul className="sidebar__lists">
+            {taskLists.map((list) => (
+              <li key={list.id} className="sidebar__lists--item">
+                <button
+                  className="sidebar__lists--button"
+                  onClick={() => handleListClick(list.name)} 
+                >
+                  {list.name}
+                </button>
+                <span className="sidebar__lists--count">{list.count || 0}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <button className="sidebar__new--btn">+ Create new List ⌘L</button>
+      </div>
+      <MiddleContainer selectedList={selectedList} />
+    </>
   );
 }
 
 export default ListsContainer;
-
