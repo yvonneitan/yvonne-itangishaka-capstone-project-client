@@ -198,17 +198,17 @@ function ListsContainer() {
         <div className="task-form">
           <MiddleContainer selectedList={selectedList} />
           <form onSubmit={handleCreateNewTask} className="task-form__container">
-            <label htmlFor="task-name" className="task-form__label">Task:</label>
             <input
               type="text"
               id="task-name"
               className="task-form__input"
+              placeholder="Enter your Task"
               value={taskName}
               onChange={(e) => setTaskName(e.target.value)}
               required
             />
 
-            <label htmlFor="start-time" className="task-form__label">From:</label>
+            <label htmlFor="start-time" className="task-form__label">Start:</label>
             <input
               type="datetime-local"
               id="start-time"
@@ -218,7 +218,7 @@ function ListsContainer() {
               required
             />
 
-            <label htmlFor="end-time" className="task-form__label">To:</label>
+            <label htmlFor="end-time" className="task-form__label">End:</label>
             <input
               type="datetime-local"
               id="end-time"
@@ -227,8 +227,6 @@ function ListsContainer() {
               onChange={(e) => setEndTime(e.target.value)}
               required
             />
-
-            <label htmlFor="task-list" className="task-form__label">List:</label>
             <select
               id="task-list"
               className="task-form__select"
