@@ -12,6 +12,7 @@ function ListsContainer() {
   const [newListName, setNewListName] = useState("");
   const [inputError, setInputError] = useState("");
   const [showInput, setShowInput] = useState(false);
+  const [showTaskForm, setShowTaskForm] = useState(false);
   const [taskName, setTaskName] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
@@ -97,6 +98,19 @@ function ListsContainer() {
   const handleShowInput = () => {
     setShowInput(true);
   };
+
+  const handleShowTaskForm = () => {
+    setShowTaskForm(true); 
+  };
+
+  const handleCancelTask = () => {
+    setShowTaskForm(false); 
+    setTaskName(""); 
+    setStartTime("");
+    setEndTime(""); 
+    setSelectedList("");
+  };
+
   const handleCreateNewTask = async (e) => {
     e.preventDefault();
     const newTask = {
@@ -124,11 +138,7 @@ function ListsContainer() {
 
       setTaskLists((prev) => [...prev, newTask]);
 
-      // Clear form fields
-      setTaskName("");
-      setStartTime("");
-      setEndTime("");
-      setSelectedList("");
+      handleCancelTask(); 
     } catch (error) {
       console.error("Error creating new task:", error);
     }
@@ -195,8 +205,14 @@ function ListsContainer() {
           + Create new List ⌘L
         </button>
       </div>
-        <div className="task-form">
-          <MiddleContainer selectedList={selectedList} />
+      <div className="task-form">
+        <MiddleContainer selectedList={selectedList} />
+        {!showTaskForm && (
+          <button className="main-content__add--task" onClick={handleShowTaskForm}>
+            + Add new Task ⌘N
+          </button>
+        )}
+        {showTaskForm && (
           <form onSubmit={handleCreateNewTask} className="task-form__container">
             <input
               type="text"
@@ -245,11 +261,12 @@ function ListsContainer() {
             <button type="submit" className="task-form__submit-btn">
               Add Task
             </button>
-         </form>
-         <button className="main-content__add--task">+ Add new Task ⌘N</button>
-
-        </div>
-
+            <button type="button" className="task-form__cancel-btn" onClick={handleCancelTask}>
+              Cancel
+            </button>
+          </form>
+        )}
+      </div>
     </>
   );
 }
