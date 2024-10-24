@@ -148,54 +148,6 @@ function ListsContainer() {
         <div className="sidebar__title">
           {user ? `${user.username} AcTrack` : "Your AcTrack"}
         </div>
-
-        <form onSubmit={handleCreateNewTask} className="task-form">
-          <label htmlFor="task-name">Task Name:</label>
-          <input
-            type="text"
-            id="task-name"
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-            required
-          />
-
-          <label htmlFor="start-time">Start Time:</label>
-          <input
-            type="datetime-local"
-            id="start-time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-
-          <label htmlFor="end-time">End Time:</label>
-          <input
-            type="datetime-local"
-            id="end-time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-
-          <label htmlFor="task-list">Select List:</label>
-          <select
-            id="task-list"
-            value={selectedList}
-            onChange={(e) => setSelectedList(e.target.value)}
-            required
-          >
-            <option value="">Select a list</option>
-            {taskLists.map((list) => (
-              <option key={list.id} value={list.id}>
-                {list.name}
-              </option>
-            ))}
-          </select>
-
-          <button type="submit" className="submit-btn">
-            Add Task
-          </button>
-        </form>
         {taskLists.length === 0 ? (
           <div className="sidebar__no-list">No task lists available.</div>
         ) : (
@@ -243,7 +195,111 @@ function ListsContainer() {
           + Create new List ⌘L
         </button>
       </div>
+      {/* <div className="task__form-lists">
       <MiddleContainer selectedList={selectedList} />
+      <form onSubmit={handleCreateNewTask} className="task-form">
+          <label htmlFor="task-name">Task Name:</label>
+          <input
+            type="text"
+            id="task-name"
+            value={taskName}
+            onChange={(e) => setTaskName(e.target.value)}
+            required
+          />
+
+          <label htmlFor="start-time">Start Time:</label>
+          <input
+            type="datetime-local"
+            id="start-time"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+          />
+
+          <label htmlFor="end-time">End Time:</label>
+          <input
+            type="datetime-local"
+            id="end-time"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            required
+          />
+
+          <label htmlFor="task-list">Select List:</label>
+          <select
+            id="task-list"
+            value={selectedList}
+            onChange={(e) => setSelectedList(e.target.value)}
+            required
+          >
+            <option value="">Select a list</option>
+            {taskLists.map((list) => (
+              <option key={list.id} value={list.id}>
+                {list.name}
+              </option>
+            ))}
+          </select>
+
+          <button type="submit" className="submit-btn">
+            Add Task
+          </button>
+        </form>
+        </div> */}
+        <div className="task-form">
+          <MiddleContainer selectedList={selectedList} />
+          <form onSubmit={handleCreateNewTask} className="task-form__container">
+            <label htmlFor="task-name" className="task-form__label">Task:</label>
+            <input
+              type="text"
+              id="task-name"
+              className="task-form__input"
+              value={taskName}
+              onChange={(e) => setTaskName(e.target.value)}
+              required
+            />
+
+            <label htmlFor="start-time" className="task-form__label">From:</label>
+            <input
+              type="datetime-local"
+              id="start-time"
+              className="task-form__input"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              required
+            />
+
+            <label htmlFor="end-time" className="task-form__label">To:</label>
+            <input
+              type="datetime-local"
+              id="end-time"
+              className="task-form__input"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              required
+            />
+
+            <label htmlFor="task-list" className="task-form__label">List:</label>
+            <select
+              id="task-list"
+              className="task-form__select"
+              value={selectedList}
+              onChange={(e) => setSelectedList(e.target.value)}
+              required
+            >
+              <option value="">Select a list</option>
+              {taskLists.map((list) => (
+                <option key={list.id} value={list.id}>
+                  {list.name}
+                </option>
+              ))}
+            </select>
+
+            <button type="submit" className="task-form__submit-btn">
+              Add Task
+            </button>
+         </form>
+        </div>
+
     </>
   );
 }

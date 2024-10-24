@@ -11,3 +11,16 @@
     @content;
   }
 }
+
+@mixin button {
+  background: $background-log-button-color;
+  color: $white;
+  font-weight: $font-bold;
+  border-radius: 0.3125rem;
+  font-size: $font-paragraph;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border: none;
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+}
