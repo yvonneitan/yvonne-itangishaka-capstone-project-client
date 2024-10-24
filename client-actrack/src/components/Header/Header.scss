@@ -8,6 +8,8 @@
     padding:1rem;
     &__logo{
         padding-top: 1rem;
+        color:$active-link;
+
     }
     &__logo,&__home,&__lists,&__completed{
         background:transparent;

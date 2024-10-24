@@ -195,56 +195,6 @@ function ListsContainer() {
           + Create new List ⌘L
         </button>
       </div>
-      {/* <div className="task__form-lists">
-      <MiddleContainer selectedList={selectedList} />
-      <form onSubmit={handleCreateNewTask} className="task-form">
-          <label htmlFor="task-name">Task Name:</label>
-          <input
-            type="text"
-            id="task-name"
-            value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
-            required
-          />
-
-          <label htmlFor="start-time">Start Time:</label>
-          <input
-            type="datetime-local"
-            id="start-time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-
-          <label htmlFor="end-time">End Time:</label>
-          <input
-            type="datetime-local"
-            id="end-time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-
-          <label htmlFor="task-list">Select List:</label>
-          <select
-            id="task-list"
-            value={selectedList}
-            onChange={(e) => setSelectedList(e.target.value)}
-            required
-          >
-            <option value="">Select a list</option>
-            {taskLists.map((list) => (
-              <option key={list.id} value={list.id}>
-                {list.name}
-              </option>
-            ))}
-          </select>
-
-          <button type="submit" className="submit-btn">
-            Add Task
-          </button>
-        </form>
-        </div> */}
         <div className="task-form">
           <MiddleContainer selectedList={selectedList} />
           <form onSubmit={handleCreateNewTask} className="task-form__container">
