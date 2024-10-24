@@ -120,9 +120,9 @@ function ListsContainer() {
                     </button>
                     <span className="sidebar__lists--count">{list.count || 0}</span>
                 </li>
-              ))}
-          </ul>
-        )}
+            ))}
+        </ul>
+                )}
 
         {showInput && (
           <div className="create__box">
