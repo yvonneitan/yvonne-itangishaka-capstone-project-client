@@ -248,6 +248,8 @@ function ListsContainer() {
               Add Task
             </button>
          </form>
+         <button className="main-content__add--task">+ Add new Task ⌘N</button>
+
         </div>
 
     </>
