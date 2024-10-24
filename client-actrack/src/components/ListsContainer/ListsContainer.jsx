@@ -16,6 +16,7 @@ function ListsContainer() {
   const [taskName, setTaskName] = useState("");
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [showCreateButton, setShowCreateButton] = useState(true); 
 
   useEffect(() => {
     const getUser = async () => {
@@ -90,6 +91,7 @@ function ListsContainer() {
       setNewListName("");
       setInputError("");
       setShowInput(false);
+      setShowCreateButton(true); 
     } catch (error) {
       console.error("Error creating new list:", error);
     }
@@ -97,6 +99,7 @@ function ListsContainer() {
 
   const handleShowInput = () => {
     setShowInput(true);
+    setShowCreateButton(false); 
   };
 
   const handleShowTaskForm = () => {
@@ -109,6 +112,12 @@ function ListsContainer() {
     setStartTime("");
     setEndTime(""); 
     setSelectedList("");
+  };
+
+  const handleCancelCreateList = () => {
+    setShowInput(false); 
+    setNewListName(""); 
+    setShowCreateButton(true); 
   };
 
   const handleCreateNewTask = async (e) => {
@@ -187,10 +196,17 @@ function ListsContainer() {
                 className="sidebar__create--list-input"
               />
               <button
-                className="sidebar__create--list-btn"
+                className="sidebar__create--list-add-btn"
                 onClick={handleCreateNewList}
               >
                 Add
+              </button>
+              <button
+                type="button"
+                className="sidebar__create--list-cancel-btn"
+                onClick={handleCancelCreateList} 
+              >
+                Cancel
               </button>
             </div>
             {inputError && (
@@ -201,9 +217,11 @@ function ListsContainer() {
           </div>
         )}
 
-        <button className="sidebar__new--btn" onClick={handleShowInput}>
-          + Create new List ⌘L
-        </button>
+        {showCreateButton && ( 
+          <button className="sidebar__new--btn" onClick={handleShowInput}>
+            + Create new List ⌘L
+          </button>
+        )}
       </div>
       <div className="task-form">
         <MiddleContainer selectedList={selectedList} />
@@ -258,12 +276,8 @@ function ListsContainer() {
               ))}
             </select>
 
-            <button type="submit" className="task-form__submit-btn">
-              Add Task
-            </button>
-            <button type="button" className="task-form__cancel-btn" onClick={handleCancelTask}>
-              Cancel
-            </button>
+            <button type="submit" className="task-form__submit-btn">Add Task</button>
+            <button type="button" className="task-form__cancel-btn" onClick={handleCancelTask}>Cancel</button>
           </form>
         )}
       </div>
