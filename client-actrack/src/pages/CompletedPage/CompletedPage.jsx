@@ -1,11 +1,9 @@
 import React from 'react'
 import './CompletedPage.scss'
+import CompletedLists from '../../components/CompletedLists/CompletedLists'
 function CompletedPage() {
   return (
-    <div>
-        <h1>This is the Completed Page</h1>
-      
-    </div>
+   <CompletedLists/>
   )
 }
 

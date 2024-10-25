@@ -1,0 +1,24 @@
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+
+.task-completed{
+    &__title{
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5rem;
+    }
+    &__none{
+        display: flex;
+        flex-direction: column;
+        padding-left:2rem;
+        background: $white;
+        border: none;
+        color: $text-grey;
+        font-weight: $font-bold;
+        border-radius: 0.3125rem;
+        font-size: $font-paragraph;
+        padding: 0.5rem;
+        width: 100%;
+        margin:1em;
+    }
+}
