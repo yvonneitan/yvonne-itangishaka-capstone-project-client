@@ -231,12 +231,14 @@ function ListsContainer() {
       <div className="task-form">
         <MiddleContainer selectedList={selectedList} />
         {!showTaskForm && (
-          <button className="main-content__add--task" onClick={handleShowTaskForm}>
+          <button className="task-form__add--task" onClick={handleShowTaskForm}>
             + Add new Task ⌘N
           </button>
         )}
         {showTaskForm && (
           <form onSubmit={handleCreateNewTask} className="task-form__container">
+            <label htmlFor="end-time" className="task-form__label">Task:</label>
+
             <input
               type="text"
               id="task-name"
@@ -247,7 +249,7 @@ function ListsContainer() {
               required
             />
 
-            <label htmlFor="start-time" className="task-form__label">Start:</label>
+            <label htmlFor="start-time" className="task-form__label">Start date and time:</label>
             <input
               type="datetime-local"
               id="start-time"
@@ -257,7 +259,7 @@ function ListsContainer() {
               required
             />
 
-            <label htmlFor="end-time" className="task-form__label">End:</label>
+            <label htmlFor="end-time" className="task-form__label">End date and time :</label>
             <input
               type="datetime-local"
               id="end-time"
@@ -266,6 +268,8 @@ function ListsContainer() {
               onChange={(e) => setEndTime(e.target.value)}
               required
             />
+            <label htmlFor="end-time" className="task-form__label">List:</label>
+
             <select
               id="task-list"
               className="task-form__select"
@@ -280,8 +284,10 @@ function ListsContainer() {
                 </option>
               ))}
             </select>
-            <button type="submit" className="task-form__submit-btn">Add Task</button>
-            <button type="button" className="task-form__cancel-btn" onClick={handleCancelTask}>Cancel</button>
+            <div className="task-form__btn">
+            <button type="submit" className="task-form__btn--submit">Add Task</button>
+            <button type="button" className="task-form__btn--cancel" onClick={handleCancelTask}>Cancel</button>
+            </div>
           </form>
         )}
       </div>

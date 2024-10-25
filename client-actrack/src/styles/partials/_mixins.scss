@@ -24,6 +24,9 @@
   cursor: pointer; 
   transition: background-color 0.3s ease;
   width: max-content;
+  &:hover {
+    opacity: 0.8;
+  }
 
 }
 @mixin secondary-button{
@@ -38,6 +41,7 @@
   cursor: pointer; 
   transition: background-color 0.3s ease;
   width: max-content;
+  
 }
 @mixin input-field{
   background:$white;
@@ -49,4 +53,7 @@
   padding: 0.5rem;
   width: 100%;
   margin: 0;
+  &:hover {
+    opacity: 0.8;
+  }
 }
