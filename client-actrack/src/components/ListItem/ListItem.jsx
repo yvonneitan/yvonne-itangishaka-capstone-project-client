@@ -1,14 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-function ListItem({ list, onListClick }) {
+function ListItem() {
   return (
-    <li className="sidebar__lists--item">
-      <button className="sidebar__lists--button" onClick={() => onListClick(list.name)}>
-        {list.name}
-      </button>
-      <span className="sidebar__lists--count">{list.count || 0}</span>
-    </li>
-  );
+    <div>
+      
+    </div>
+  )
 }
 
-export default ListItem;
+export default ListItem
