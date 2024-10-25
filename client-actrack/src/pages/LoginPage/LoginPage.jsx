@@ -14,8 +14,9 @@ function LoginPage() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Fake user login credentials
-    const fakeUser = "yvonneitan@example.com";
+    // Fake user login credentials. Use these specified 
+    //credentials at the login page to use the app
+    const fakeUser = "yvonne@example.com";
     const fakePassword = "password123";
 
     if (username === fakeUser && password === fakePassword) {
