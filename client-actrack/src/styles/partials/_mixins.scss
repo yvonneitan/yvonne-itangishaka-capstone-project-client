@@ -57,3 +57,10 @@
     opacity: 0.8;
   }
 }
+@mixin name-password-fields{
+  display: flex;
+      flex-direction: row;
+      background-color: inherit;
+      border-bottom: 0.0625rem solid $border-grey;
+      width: 18rem;
+}

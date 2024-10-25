@@ -9,11 +9,11 @@
   padding: 1rem;
   margin: 1rem;
   width: 50%;
-  height: 90vh;
+  height: 80vh;
   border-radius: 0.3125rem;
   gap: 2rem;
-  max-width: 600px;
-  margin-left:25%;
+  max-width: 25rem;
+  margin-left:35%;
   &__header {
     background-color: transparent;
     color: $text-grey;
@@ -39,16 +39,13 @@
       background-color: inherit;
       border: none;
       outline: none;
+      width: 18rem;
     }
     &--icon {
       width: 2rem;
     }
     &--items {
-      display: flex;
-      flex-direction: row;
-      background-color: inherit;
-      border-bottom: 0.0625rem solid $border-grey;
-      width: max-content;
+      @include name-password-fields;
     }
   }
   &__password {
@@ -60,22 +57,20 @@
       background-color: inherit;
       border: none;
       outline: none;
+      width: 18rem;
+
     }
     &--icon {
       width: 2rem;
     }
     &--items {
-      display: flex;
-      flex-direction: row;
-      background-color: inherit;
-      border-bottom: 0.0625rem solid $border-grey;
-      width: max-content;
+    @include name-password-fields;
       
     }
   }
   &__label {
     font-weight: $font-bold;
-    color: $text-grey;
+    color: $text-black;
   }
   &__header {
     display: flex;
@@ -96,5 +91,32 @@
     border-radius: 2rem;
     margin-left: 5rem;
 
+  }
+  &__guide{
+    font-weight: $font-bold;
+    font-size:smaller;
+    color: $text-black;
+    background-color: transparent;
+    margin-left: 5rem;
+
+    &--sign{
+        display: flex;
+        flex-direction: row;
+        background-color: inherit;
+        &-up{
+        background-color: inherit;
+        font-size:smaller;
+        font-weight: $font-bold;
+        text-decoration: underline;
+        color: $active-link;
+        }
+
+    }
+
+
+  }
+  &__error{
+    background-color: transparent;
+  color: $error;
   }
 }

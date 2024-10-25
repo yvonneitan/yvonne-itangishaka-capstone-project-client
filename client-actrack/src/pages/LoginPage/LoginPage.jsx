@@ -58,9 +58,14 @@ function LoginPage() {
           />
           </div>
         </div>
+        <p className="login-container__guide">Forgot your password?</p>
         <button type="submit" className="login-container__button">LOGIN</button>
+        {message && <p className="login-container__error">{message}</p>}
+        <div className="login-container__guide--sign">
+        <p className="login-container__guide">Don't have an account?</p>
+        <p className="login-container__guide--sign-up">Signup</p>
+        </div>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 }
