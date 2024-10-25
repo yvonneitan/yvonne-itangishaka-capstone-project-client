@@ -1,3 +1,32 @@
-.container{
-    justify-content: center;
+@use "../../styles/partials/variables" as *;
+
+.login-container{
+    display: flex;
+    flex-direction: column;
+    width:max-content;
+    background: $background-container-color;
+    padding:1rem;
+    margin: 1rem;
+    width:70%;
+    height: 90vh;
+    border-radius: 0.3125rem;
+    &__header,&__user,&__password,&__label,
+    &__user--icon,&__password--icon,
+    &__user--name,&__user--password, &__button{
+        background-color: transparent;
+        
+
+
+    }
+    &__header{
+        display: flex;
+    }
+    &__form{
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        // width: max-content;
+        justify-content: center;
+    }
 }
+

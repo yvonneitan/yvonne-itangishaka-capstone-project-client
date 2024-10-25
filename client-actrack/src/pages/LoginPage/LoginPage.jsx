@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react'; 
-import './LoginPage.scss';
+import "./LoginPage.scss";
 import userIcon from "../../assets/icons/user.svg";
 import passwordIcon from "../../assets/icons/password.svg";
 import { useNavigate } from 'react-router-dom';
@@ -28,11 +28,11 @@ function LoginPage() {
 
   return (
     <div className='login-container'>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
+      <h2 className="login-container__header">Login</h2>
+      <form onSubmit={handleLogin} className="login-container__form">
         <div className='login-container__user'>
           <label className='login-container__label'>Username:</label>
-          <img src={userIcon} alt="" className="user__icon" />
+          <img src={userIcon} alt="" className="login-container__user--icon" />
           <input
             type="text"
             value={username}
@@ -41,9 +41,9 @@ function LoginPage() {
             className='login-container__user--name'
           />
         </div>
-        <div>
+        <div className="login-container__password">
           <label className='login-container__label'>Password:</label>
-          <img src={passwordIcon} alt="" className="password__icon" />
+          <img src={passwordIcon} alt="" className="login-container__password--icon" />
           <input
             type="password"
             value={password}
@@ -52,7 +52,7 @@ function LoginPage() {
             className='login-container__user--password'
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-container__button">Login</button>
       </form>
       {message && <p>{message}</p>}
     </div>
