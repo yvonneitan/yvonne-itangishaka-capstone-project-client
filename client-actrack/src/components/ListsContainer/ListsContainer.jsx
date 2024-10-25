@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ListsContainer.scss";
 import ListsButton from "../ListsButton/ListsButton";
 import MiddleContainer from "../MiddleContainer/MiddleContainer";
+import errorIcon from "../../assets/icons/error-24px.svg"
 
 function ListsContainer() {
   const [taskLists, setTaskLists] = useState([]);
@@ -197,8 +198,15 @@ function ListsContainer() {
                 className="sidebar__create--list-input"
               />
                {inputError && (
+              <div className="sidebar__create--error">
+                 <img
+                   src={errorIcon}
+                   alt="Warning Icon"
+                   className="sidebar__create--error-icon"
+                 />
               <div className="sidebar__create--error-message">
                 List name cannot be Empty!
+              </div>
               </div>
             )}
               <div className="sidebar__create--buttons">

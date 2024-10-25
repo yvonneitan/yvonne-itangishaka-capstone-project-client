@@ -130,15 +130,29 @@
                 @include secondary-button;
             }
         }
-
-        &--error-message {
+        &--error{
+            display: flex;
+            flex-direction: row;
             background: transparent;
-            padding-right: 0.5rem;
-            padding-left: 1rem;
-            color: $error;
             width: 100%;
-            font-family: 'Pacifico', cursive;
-            font-weight: $font-bold;        }
+            &-message {
+                background: inherit;
+                padding-right: 0.5rem;
+                padding-left: 1rem;
+                color: $error;
+                font-family: 'Pacifico', cursive;
+                font-weight: $font-bold;        
+            }
+            &-icon{
+                background: inherit;
+                padding:0;
+                margin-top: 0.5rem;
+                height: 1.125rem;
+
+            }
+
+        }
+
     }
 
     .create__box {
