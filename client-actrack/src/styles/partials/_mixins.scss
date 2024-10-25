@@ -23,6 +23,8 @@
   border: none;
   cursor: pointer; 
   transition: background-color 0.3s ease;
+  width: max-content;
+
 }
 @mixin secondary-button{
   background: $white;
@@ -35,6 +37,7 @@
   border: 0.0625rem solid $active-link;
   cursor: pointer; 
   transition: background-color 0.3s ease;
+  width: max-content;
 }
 @mixin input-field{
   background:$white;
@@ -42,12 +45,8 @@
   font-weight:$font-bold;
   border-radius: 0.3125rem;
   font-size: $font-paragraph;
-  padding-right: 1rem;
-  padding-left:1rem;
-  // margin: 1rem;
-  // width:12rem;
-  margin: 0;
-  margin-right: 0.5rem;
-  margin-left:0.5rem;
   border: 0.0625rem solid $text-grey;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0;
 }

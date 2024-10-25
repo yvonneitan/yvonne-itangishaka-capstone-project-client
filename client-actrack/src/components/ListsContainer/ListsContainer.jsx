@@ -117,6 +117,7 @@ function ListsContainer() {
   const handleCancelCreateList = () => {
     setShowInput(false); 
     setNewListName(""); 
+    setInputError("");
     setShowCreateButton(true); 
   };
 
@@ -195,6 +196,13 @@ function ListsContainer() {
                 placeholder="New List Name"
                 className="sidebar__create--list-input"
               />
+               {inputError && (
+              <div className="sidebar__create--error-message">
+                List name cannot be Empty!
+              </div>
+            )}
+              <div className="sidebar__create--buttons">
+
               <button
                 className="sidebar__create--list-add-btn"
                 onClick={handleCreateNewList}
@@ -208,12 +216,9 @@ function ListsContainer() {
               >
                 Cancel
               </button>
-            </div>
-            {inputError && (
-              <div className="sidebar__create--error-message">
-                List name cannot be Empty!
               </div>
-            )}
+            </div>
+           
           </div>
         )}
 
@@ -275,7 +280,6 @@ function ListsContainer() {
                 </option>
               ))}
             </select>
-
             <button type="submit" className="task-form__submit-btn">Add Task</button>
             <button type="button" className="task-form__cancel-btn" onClick={handleCancelTask}>Cancel</button>
           </form>
