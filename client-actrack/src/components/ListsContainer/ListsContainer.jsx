@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./ListsContainer.scss";
-import ListsButton from "../ListsButton/ListsButton";
 import MiddleContainer from "../MiddleContainer/MiddleContainer";
 import errorIcon from "../../assets/icons/error-24px.svg"
 
