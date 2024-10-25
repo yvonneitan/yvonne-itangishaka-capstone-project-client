@@ -41,8 +41,7 @@
             flex-direction: row;
             background-color: inherit;
             border-bottom: 0.0625rem solid $border-grey;
-
-
+            width:max-content
         }
     }
     &__password{
@@ -62,6 +61,7 @@
             flex-direction: row;
             background-color: inherit;
             border-bottom: 0.0625rem solid $border-grey;
+            width:max-content
 
         }
     }
