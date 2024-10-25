@@ -1,4 +1,5 @@
 @use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
 .header{
     display:flex;
     flex-direction: row;
@@ -30,13 +31,13 @@
     &__profile{
         background:transparent; 
         &-icon{
-            background: $background-log-button-color;
+            @include primary-button;
             color: $white;
-            padding:1rem;
-            padding-right: 2rem;
+            padding:0.7rem;
+            padding-right:2rem;
             padding-left: 2rem;
             border-radius: 2rem;
-            font-weight: $font-bold;
+            margin-top: 0.5rem;
         }
     }
     

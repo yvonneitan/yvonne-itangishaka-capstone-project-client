@@ -52,13 +52,13 @@ function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Type your user password"
+            placeholder="Type your password"
             required
             className='login-container__password--text'
           />
           </div>
         </div>
-        <button type="submit" className="login-container__button">Login</button>
+        <button type="submit" className="login-container__button">LOGIN</button>
       </form>
       {message && <p>{message}</p>}
     </div>

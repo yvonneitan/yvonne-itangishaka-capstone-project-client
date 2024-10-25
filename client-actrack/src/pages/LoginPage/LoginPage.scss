@@ -9,10 +9,16 @@
     background: $background-container-color;
     padding:1rem;
     margin: 1rem;
-    width:70%;
+    width:50%;
     height: 90vh;
     border-radius: 0.3125rem;
     gap:2rem;
+    max-width: 600px;
+
+
+  
+
+ 
     &__header{
         background-color: transparent;
         color: $text-grey;
@@ -32,6 +38,8 @@
         &--name{
             background-color: inherit;
             border: none;
+            outline: none;
+
         }
         &--icon{
             width:2rem;
@@ -52,6 +60,7 @@
         &--text{
             background-color: inherit;
             border: none;
+            outline: none;
         }
         &--icon{
             width:2rem;
@@ -61,7 +70,7 @@
             flex-direction: row;
             background-color: inherit;
             border-bottom: 0.0625rem solid $border-grey;
-            width:max-content
+            width:max-content;
 
         }
     }
@@ -77,8 +86,18 @@
         display: flex;
         flex-direction: column;
         background-color: transparent;
-        // width: max-content;
         justify-content: center;
+        gap:1rem;
+     
+    }
+    &__button{
+        @include primary-button;
+        color: $text-black;
+        padding:0.5rem;
+        padding-right: 5rem;
+        padding-left: 5rem;
+        border-radius: 2rem;
+       
     }
 }
 
