@@ -5,7 +5,7 @@ import ListsContainer from '../../components/ListsContainer/ListsContainer'
 function ListsPage() {
   return (
 
-    <ListsContainer/>  )
+    <ListsContainer showForm={false}/>  )
 }
 
 export default ListsPage

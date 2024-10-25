@@ -3,7 +3,7 @@ import "./ListsContainer.scss";
 import MiddleContainer from "../MiddleContainer/MiddleContainer";
 import errorIcon from "../../assets/icons/error-24px.svg"
 
-function ListsContainer() {
+function ListsContainer({showForm}) {
   const [taskLists, setTaskLists] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,24 +36,39 @@ function ListsContainer() {
       }
     };
 
-    const getTaskLists = async (userId) => {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/api/lists/task-lists?userId=${userId}`
-        );
-        if (!response.ok) {
-          throw new Error("Network response for task lists was not ok");
-        }
-        const data = await response.json();
-        setTaskLists(data);
-      } catch (error) {
-        setError("Failed to fetch task lists.");
-        console.error("Error fetching task lists:", error);
-      }
-    };
+    // const getTaskLists = async (userId) => {
+    //   try {
+    //     const response = await fetch(
+    //       `http://localhost:8080/api/lists/task-lists?userId=${userId}`
+    //     );
+    //     if (!response.ok) {
+    //       throw new Error("Network response for task lists was not ok");
+    //     }
+    //     const data = await response.json();
+    //     setTaskLists(data);
+    //   } catch (error) {
+    //     setError("Failed to fetch task lists.");
+    //     console.error("Error fetching task lists:", error);
+    //   }
+    // };
 
     getUser();
   }, []);
+  const getTaskLists = async (userId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/lists/task-lists?userId=${userId}`
+      );
+      if (!response.ok) {
+        throw new Error("Network response for task lists was not ok");
+      }
+      const data = await response.json();
+      setTaskLists(data);
+    } catch (error) {
+      setError("Failed to fetch task lists.");
+      console.error("Error fetching task lists:", error);
+    }
+  };
 
   const handleListClick = (listName) => {
     setSelectedList(listName);
@@ -87,11 +102,17 @@ function ListsContainer() {
       }
 
       const newList = await response.json();
-      setTaskLists((prevLists) => [...prevLists, newList]);
+
+      console.log(newList);
+      getTaskLists(user.id);
+
+      // setTaskLists((prevLists) => [...prevLists, newList]);
       setNewListName("");
       setInputError("");
       setShowInput(false);
       setShowCreateButton(true); 
+
+
     } catch (error) {
       console.error("Error creating new list:", error);
     }
@@ -120,6 +141,10 @@ function ListsContainer() {
     setInputError("");
     setShowCreateButton(true); 
   };
+  // useEffect(()=>{
+
+  //   console.log(taskLists);
+  // },[taskLists])
 
   const handleCreateNewTask = async (e) => {
     e.preventDefault();
@@ -142,12 +167,12 @@ function ListsContainer() {
       if (!response.ok) {
         throw new Error("Failed to create new task.");
       }
-
+      console.log("res",response.body);
       const result = await response.json();
       console.log("New task ID:", result.taskId);
+      console.log("Result",result);
 
-      setTaskLists((prev) => [...prev, newTask]);
-
+      getTaskLists(user.id);
       handleCancelTask(); 
     } catch (error) {
       console.error("Error creating new task:", error);
@@ -229,19 +254,22 @@ function ListsContainer() {
           </div>
         )}
 
-        {showCreateButton && ( 
+        {showCreateButton && showForm!==false &&( 
           <button className="sidebar__new--btn" onClick={handleShowInput}>
             + Create new List ⌘L
           </button>
         )}
       </div>
+   
       <div className="task-form">
         <MiddleContainer selectedList={selectedList} />
-        {!showTaskForm && (
+        
+        {!showTaskForm && showForm!==false && (
           <button className="task-form__add--task" onClick={handleShowTaskForm}>
             + Add new Task ⌘N
           </button>
         )}
+      
         {showTaskForm && (
           <form onSubmit={handleCreateNewTask} className="task-form__container">
             <label htmlFor="end-time" className="task-form__label">Task:</label>
