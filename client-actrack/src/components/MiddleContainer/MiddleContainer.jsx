@@ -83,9 +83,9 @@ function MiddleContainer({ selectedList }) {
           ))
         ) : (
           selectedList ? (
-            <div>Your Task List is Empty!</div>
+            <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>
           ) : (
-            <div>Select a list to see your tasks.</div>
+            <div className="main-content__select--list">Select an AcTrack list to see your tasks.</div>
           )
         )}
       </div>

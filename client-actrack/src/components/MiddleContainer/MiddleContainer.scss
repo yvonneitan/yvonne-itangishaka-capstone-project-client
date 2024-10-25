@@ -36,5 +36,19 @@
         background: transparent;
     }
     }
+    &__error--task{
+        // font-family: 'Pacifico', cursive;
+        color:$pink-message;
+        font-weight:$font-bold;
+        font-size: $font-subheader;
+        padding-top:2rem;
+    }
+    &__select--list{
+        // font-family: 'Pacifico', cursive;
+        color:$active-link;
+        font-weight:$font-bold;
+        font-size: $font-subheader;
+        padding-top:2rem;
+    }
 
 }
