@@ -1,4 +1,6 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 
 .login-container{
     display: flex;
@@ -10,13 +12,63 @@
     width:70%;
     height: 90vh;
     border-radius: 0.3125rem;
-    &__header,&__user,&__password,&__label,
-    &__user--icon,&__password--icon,
-    &__user--name,&__user--password, &__button{
+    gap:2rem;
+    &__header{
         background-color: transparent;
-        
+        color: $text-grey;
+
+    }
+    &__password,&__label,
+    &__user--icon,&__password--icon,&__user--password, &__button{
+        background-color: transparent;
+    }
+    &__user{
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        padding-bottom: 1rem;
+        gap:1.5rem;
+
+        &--name{
+            background-color: inherit;
+            border: none;
+        }
+        &--icon{
+            width:2rem;
+        }
+        &--items{
+            display: flex;
+            flex-direction: row;
+            background-color: inherit;
+            border-bottom: 0.0625rem solid $border-grey;
 
 
+        }
+    }
+    &__password{
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        gap:1.5rem;
+        &--text{
+            background-color: inherit;
+            border: none;
+        }
+        &--icon{
+            width:2rem;
+        }
+        &--items{
+            display: flex;
+            flex-direction: row;
+            background-color: inherit;
+            border-bottom: 0.0625rem solid $border-grey;
+
+        }
+    }
+    &__label{
+        font-weight: $font-bold;
+        color:$text-grey;
+            
     }
     &__header{
         display: flex;
