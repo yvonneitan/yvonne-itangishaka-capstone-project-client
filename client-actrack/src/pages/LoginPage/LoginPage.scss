@@ -1,103 +1,100 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
-.login-container{
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  background: $background-container-color;
+  padding: 1rem;
+  margin: 1rem;
+  width: 50%;
+  height: 90vh;
+  border-radius: 0.3125rem;
+  gap: 2rem;
+  max-width: 600px;
+  margin-left:25%;
+  &__header {
+    background-color: transparent;
+    color: $text-grey;
+    font-size: $font-header;
+    margin-left: 40%;
+  }
+  &__password,
+  &__label,
+  &__user--icon,
+  &__password--icon,
+  &__user--password,
+  &__button {
+    background-color: transparent;
+  }
+  &__user {
     display: flex;
     flex-direction: column;
-    width:max-content;
-    background: $background-container-color;
-    padding:1rem;
-    margin: 1rem;
-    width:50%;
-    height: 90vh;
-    border-radius: 0.3125rem;
-    gap:2rem;
-    max-width: 600px;
+    background-color: transparent;
+    padding-bottom: 1rem;
+    gap: 1.5rem;
 
+    &--name {
+      background-color: inherit;
+      border: none;
+      outline: none;
+    }
+    &--icon {
+      width: 2rem;
+    }
+    &--items {
+      display: flex;
+      flex-direction: row;
+      background-color: inherit;
+      border-bottom: 0.0625rem solid $border-grey;
+      width: max-content;
+    }
+  }
+  &__password {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    gap: 1.5rem;
+    &--text {
+      background-color: inherit;
+      border: none;
+      outline: none;
+    }
+    &--icon {
+      width: 2rem;
+    }
+    &--items {
+      display: flex;
+      flex-direction: row;
+      background-color: inherit;
+      border-bottom: 0.0625rem solid $border-grey;
+      width: max-content;
+      
+    }
+  }
+  &__label {
+    font-weight: $font-bold;
+    color: $text-grey;
+  }
+  &__header {
+    display: flex;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: center;
+    gap: 1rem;
+  }
+  &__button {
+    @include primary-button;
+    color: $text-black;
+    padding: 0.5rem;
+    padding-right: 5rem;
+    padding-left: 5rem;
+    border-radius: 2rem;
+    margin-left: 5rem;
 
-  
-
- 
-    &__header{
-        background-color: transparent;
-        color: $text-grey;
-
-    }
-    &__password,&__label,
-    &__user--icon,&__password--icon,&__user--password, &__button{
-        background-color: transparent;
-    }
-    &__user{
-        display: flex;
-        flex-direction: column;
-        background-color: transparent;
-        padding-bottom: 1rem;
-        gap:1.5rem;
-
-        &--name{
-            background-color: inherit;
-            border: none;
-            outline: none;
-
-        }
-        &--icon{
-            width:2rem;
-        }
-        &--items{
-            display: flex;
-            flex-direction: row;
-            background-color: inherit;
-            border-bottom: 0.0625rem solid $border-grey;
-            width:max-content
-        }
-    }
-    &__password{
-        display: flex;
-        flex-direction: column;
-        background-color: transparent;
-        gap:1.5rem;
-        &--text{
-            background-color: inherit;
-            border: none;
-            outline: none;
-        }
-        &--icon{
-            width:2rem;
-        }
-        &--items{
-            display: flex;
-            flex-direction: row;
-            background-color: inherit;
-            border-bottom: 0.0625rem solid $border-grey;
-            width:max-content;
-
-        }
-    }
-    &__label{
-        font-weight: $font-bold;
-        color:$text-grey;
-            
-    }
-    &__header{
-        display: flex;
-    }
-    &__form{
-        display: flex;
-        flex-direction: column;
-        background-color: transparent;
-        justify-content: center;
-        gap:1rem;
-     
-    }
-    &__button{
-        @include primary-button;
-        color: $text-black;
-        padding:0.5rem;
-        padding-right: 5rem;
-        padding-left: 5rem;
-        border-radius: 2rem;
-       
-    }
+  }
 }
-
