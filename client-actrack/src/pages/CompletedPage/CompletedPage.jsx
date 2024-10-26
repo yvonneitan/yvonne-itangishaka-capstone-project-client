@@ -3,7 +3,7 @@ import './CompletedPage.scss'
 import CompletedLists from '../../components/CompletedLists/CompletedLists'
 function CompletedPage() {
   return (
-   <CompletedLists/>
+   <CompletedLists showForm={false}/>
   )
 }
 

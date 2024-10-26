@@ -64,3 +64,24 @@
       border-bottom: 0.0625rem solid $border-grey;
       width: 18rem;
 }
+@keyframes pulseText {
+  0% {
+    color: $active-link;
+    text-shadow: 0 0 5px $white;
+    background-color:transparent;
+
+  }
+  50% {
+    color: $pink-message;
+    text-shadow: 0 0 5px $white;
+    background-color:transparent;
+
+  }
+  100% {
+    
+    color: $yellow-message; 
+    text-shadow: 0 0 5px $text-black;
+    background-color:transparent;
+
+  }
+}

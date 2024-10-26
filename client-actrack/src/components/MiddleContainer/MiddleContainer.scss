@@ -49,6 +49,9 @@
         font-weight:$font-bold;
         font-size: $font-subheader;
         padding-top:2rem;
+        animation: pulseText 6s infinite ease-in-out;
+        
+
     }
 
 }
