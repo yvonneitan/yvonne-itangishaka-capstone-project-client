@@ -222,7 +222,7 @@ function ListsContainer({showForm}) {
                 className="sidebar__create--list-add-btn"
                 onClick={handleCreateNewList}
               >
-                Add
+                Add List
               </button>
               <button
                 type="button"
