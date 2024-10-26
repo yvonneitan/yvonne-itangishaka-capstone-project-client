@@ -65,6 +65,10 @@
             @include primary-button;
             margin-left:0.5rem;
         }
+        &--cancel-button{
+            @include secondary-button;
+            margin-left:0.5rem;
+        }
     }
     &__error--task{
         color:$pink-message;
