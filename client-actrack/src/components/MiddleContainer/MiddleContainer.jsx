@@ -1,7 +1,7 @@
-
 import React, { useEffect, useState } from 'react';
 import './MiddleContainer.scss';
 import editIcon from "../../assets/icons/edit-24px.svg";
+import DeleteModal from '../DeleteModal/DeleModal'; 
 
 function MiddleContainer({ selectedList }) {
   const [user, setUser] = useState(null);
@@ -10,6 +10,8 @@ function MiddleContainer({ selectedList }) {
   const [taskEditValue, setTaskEditValue] = useState("");
   const [startTimeEdit, setStartTimeEdit] = useState("");
   const [endTimeEdit, setEndTimeEdit] = useState("");
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   // Fetch user data
   useEffect(() => {
@@ -47,7 +49,7 @@ function MiddleContainer({ selectedList }) {
   const handleEditClick = (task) => {
     setEditTaskId(task.id);
     setTaskEditValue(task.task);
-    setStartTimeEdit(new Date(task.start_time).toISOString().slice(0, -1)); // Format for datetime-local input
+    setStartTimeEdit(new Date(task.start_time).toISOString().slice(0, -1));
     setEndTimeEdit(new Date(task.end_time).toISOString().slice(0, -1));
   };
 
@@ -57,6 +59,64 @@ function MiddleContainer({ selectedList }) {
     setStartTimeEdit("");
     setEndTimeEdit("");
   };
+
+  const handleOpenDeleteModal = (taskId) => {
+    setTaskToDelete(taskId);
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setDeleteModalOpen(false);
+    setTaskToDelete(null);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:8080/api/tasks/${taskToDelete}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) throw new Error('Failed to delete task');
+
+      // Remove the deleted task from the state
+      setTasks(tasks.filter(task => task.id !== taskToDelete));
+      handleCloseDeleteModal();
+    } catch (error) {
+      console.error('Error deleting task:', error);
+    }
+  };
+
+  // Fetch user data
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/users/1');
+        if (!response.ok) throw new Error('Network response for user was not ok');
+        const userData = await response.json();
+        setUser(userData);
+      } catch (error) {
+        console.error('Error getting user:', error);
+      }
+    };
+    getUser();
+  }, []);
+
+  // Fetch tasks based on selected listß
+  useEffect(() => {
+    if (selectedList) {
+      setTasks([]);
+      const getTasks = async () => {
+        try {
+          const response = await fetch(`http://localhost:8080/api/tasks?listName=${selectedList}`);
+          if (!response.ok) throw new Error('Network response for tasks was not ok');
+          const tasksData = await response.json();
+          setTasks(tasksData);
+        } catch (error) {
+          console.error('Error fetching tasks:', error);
+        }
+      };
+      getTasks();
+    }
+  }, [selectedList]);
 
   const formatDateForDatabase = (dateString) => {
     const date = new Date(dateString);
@@ -106,6 +166,7 @@ function MiddleContainer({ selectedList }) {
     return `Today, ${weekday} ${day}${suffix(day)}, ${month} ${year}`;
   };
 
+  
   return (
     <main className="main-content">
       {user && <h2 className="main-content__greeting">Good day, {user.username}</h2>}
@@ -152,6 +213,9 @@ function MiddleContainer({ selectedList }) {
                   <button onClick={() => handleEditClick(task)} className="main-content__task--edit-button">
                     <img src={editIcon} alt="edit icon" className="main-content__task--edit-icon"/>
                   </button>
+                  <button onClick={() => handleOpenDeleteModal(task.id)} className="main-content__task--delete-button">
+                    Delete
+                  </button>
                 </>
               )}
             </div>
@@ -164,6 +228,11 @@ function MiddleContainer({ selectedList }) {
           )
         )}
       </div>
+      <DeleteModal 
+        isOpen={deleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
+      />
     </main>
   );
 }
