@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MiddleContainer.scss';
+import editIcon from "../../assets/icons/edit-24px.svg";
 
 function MiddleContainer({ selectedList }) {
   const [user, setUser] = useState(null);
@@ -134,10 +135,12 @@ function MiddleContainer({ selectedList }) {
               ) : (
                 <>
                   <label htmlFor={`task-${task.id}`} className="main-content__task--label">{task.task}</label>
-                  <button onClick={() => handleEditClick(task)} className="main-content__task--edit-button">✎</button>
                   <span className="main-content__task--time">
                     {new Date(task.start_time).toLocaleString()} - {new Date(task.end_time).toLocaleString()}
                   </span>
+                  <button onClick={() => handleEditClick(task)} className="main-content__task--edit-button">
+                    <img src={editIcon} alt="edit icon" className="main-content__task--edit-icon"/>
+                  </button>
                 </>
               )}
             </div>

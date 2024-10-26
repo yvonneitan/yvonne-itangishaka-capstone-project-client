@@ -1,4 +1,6 @@
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
 .main-content{
     display: flex;
     flex-direction: column;
@@ -26,14 +28,39 @@
         font-size: $font-paragraph;
         margin: 0;
         margin-top:0.5rem;
+        display: flex;
+        flex-direction: row;
         &--label,&--time{
             background: transparent;
+            margin-top:0.6rem;
 
         }
         &--checkbox{
             border-color: $text-grey;
             border-radius:45%;
             background: transparent;
+        }
+        &--edit{
+            &-button{
+            border: none;
+            background-color: transparent;
+            }
+            &-icon{
+                border: none;
+                background-color: transparent;
+            }
+            &-input{
+                @include input-field;
+                width:auto;
+            }
+            &-time{
+                @include input-field;
+                width:auto;
+            }
+        }
+        &--save-button{
+            @include primary-button;
+            margin-left:0.5rem;
         }
     }
     &__error--task{
