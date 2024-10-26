@@ -91,7 +91,7 @@ const activeTasks = taskLists.filter(
         <h2 className="task-completed__title">Completed Tasks</h2>
         <ul>
           {completedTasks.length === 0 ? (
-            <li className="task-completed__none">No completed tasks available.</li>
+            <li className="task-completed__title">No completed tasks available.</li>
           ) : (
             completedTasks.map((task) => (
               <li key={task.id} className="task-completed__none">{task.task}</li>
