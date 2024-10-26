@@ -10,6 +10,7 @@
     &__logo{
         padding-top: 1rem;
         color:$active-link;
+      
 
     }
     &__logo,&__home,&__lists,&__completed{
@@ -18,6 +19,10 @@
         &.active{
             color:$active-link;
         }
+        &:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+          }
        
     }
    

@@ -36,22 +36,6 @@ function ListsContainer({showForm}) {
       }
     };
 
-    // const getTaskLists = async (userId) => {
-    //   try {
-    //     const response = await fetch(
-    //       `http://localhost:8080/api/lists/task-lists?userId=${userId}`
-    //     );
-    //     if (!response.ok) {
-    //       throw new Error("Network response for task lists was not ok");
-    //     }
-    //     const data = await response.json();
-    //     setTaskLists(data);
-    //   } catch (error) {
-    //     setError("Failed to fetch task lists.");
-    //     console.error("Error fetching task lists:", error);
-    //   }
-    // };
-
     getUser();
   }, []);
   const getTaskLists = async (userId) => {
@@ -106,7 +90,6 @@ function ListsContainer({showForm}) {
       console.log(newList);
       getTaskLists(user.id);
 
-      // setTaskLists((prevLists) => [...prevLists, newList]);
       setNewListName("");
       setInputError("");
       setShowInput(false);

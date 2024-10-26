@@ -42,13 +42,16 @@
             background-color: transparent;
             padding: 1rem;
             border-bottom: 0.0625rem solid $border-grey;
-            width: 100%;            
+            width: 100%;
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.1);
+              }            
         }
         &--count {
             background-color: $background-count-button-color;
             color: $text-grey;
             font-weight: $font-bold;
-            // border-radius: 0.3125rem;
             border-radius:1.875rem;
             font-size: $font-paragraph;
             padding: 0.5rem;
@@ -95,6 +98,10 @@
             width: 100%;
             margin-top:0.5rem;
             margin-bottom: 1rem;
+            &:hover{
+                color: $white;
+                background:$background-log-button-color;
+            }
 
         }
     }
@@ -126,6 +133,7 @@
 
             &-add-btn {
                 @include primary-button;
+                
             }
 
             &-cancel-btn {
@@ -183,6 +191,10 @@
         padding-left: 1rem;
         padding-right: 1rem;
         width:max-content;
+        &:hover{
+            color: $white;
+            background:$background-log-button-color;
+        }
     }
 
     &__container {

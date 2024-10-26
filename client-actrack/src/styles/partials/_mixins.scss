@@ -26,6 +26,7 @@
   width: max-content;
   &:hover {
     opacity: 0.8;
+    transform: scale(1.1);
   }
 
 }
@@ -41,6 +42,11 @@
   cursor: pointer; 
   transition: background-color 0.3s ease;
   width: max-content;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
   
 }
 @mixin input-field{
