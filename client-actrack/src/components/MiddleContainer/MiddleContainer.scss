@@ -19,6 +19,7 @@
     &__task-container{
         display: flex;
         flex-direction:column;
+        width: auto;
     }
     &__task{
         background:$white;
@@ -52,10 +53,12 @@
             &-input{
                 @include input-field;
                 width:auto;
+                border:none
             }
             &-time{
                 @include input-field;
-                width:auto;
+                padding:0;
+                border:none
             }
         }
         &--save-button{

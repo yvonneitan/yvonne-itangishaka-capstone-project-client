@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import './MiddleContainer.scss';
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -49,6 +50,14 @@ function MiddleContainer({ selectedList }) {
     setStartTimeEdit(new Date(task.start_time).toISOString().slice(0, -1)); // Format for datetime-local input
     setEndTimeEdit(new Date(task.end_time).toISOString().slice(0, -1));
   };
+
+  const handleCancelEdit = () => {
+    setEditTaskId(null);
+    setTaskEditValue("");
+    setStartTimeEdit("");
+    setEndTimeEdit("");
+  };
+
   const formatDateForDatabase = (dateString) => {
     const date = new Date(dateString);
     return date.toISOString().slice(0, 19).replace('T', ' ');
@@ -75,7 +84,6 @@ function MiddleContainer({ selectedList }) {
       console.error('Error saving task edit:', error);
     }
   };
-  
 
   const formatDate = (date) => {
     const options = { weekday: 'short' };
@@ -130,6 +138,9 @@ function MiddleContainer({ selectedList }) {
                   />
                   <button onClick={() => handleSaveEdit(task.id)} className="main-content__task--save-button">
                     Save
+                  </button>
+                  <button onClick={handleCancelEdit} className="main-content__task--cancel-button">
+                    Cancel
                   </button>
                 </>
               ) : (
