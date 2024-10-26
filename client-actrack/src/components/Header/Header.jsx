@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.scss";
 import { useNavigate, useLocation } from "react-router-dom";
 import { handleNav } from "../../utils/utils";
+import logoIcon from "../../assets/icons/actrack-logo.png";
 
 function Header() {
   const navigate = useNavigate();
@@ -11,16 +12,10 @@ function Header() {
 
   return (
     <header className="header">
-      {isLoginPage ? (
-        <p className="header__logo">AcTrack</p>
-      ) : (
-        <p
-          className="header__logo"
-          onClick={() => handleNav(navigate, "/home")}
-        >
-          AcTrack
-        </p>
-      )}
+      <div className="header__logo--item" onClick={() => handleNav(navigate, "/home")}>
+        <img src={logoIcon} alt="logo image" className="header__logo--item-icon" />
+        <p className="header__logo--item-title">AcTrack</p>
+      </div>
       {!isLoginPage && (
         <div className="header__container">
           <p
@@ -43,7 +38,6 @@ function Header() {
           </p>
         </div>
       )}
-
       <div className="header__profile">
         <p
           className="header__profile-icon"

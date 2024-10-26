@@ -7,13 +7,27 @@
     background: $background-container-color;
     border-radius: 0.3125rem;
     padding:1rem;
-    &__logo{
-        padding-top: 1rem;
-        color:$active-link;
-      
 
+    &__logo{
+        &--item{
+            display: flex;
+            flex-direction: row;
+            background:transparent;
+
+        &-title{
+            padding-top: 1rem;
+            color:$active-link;
+        }
+        &-icon{
+            width: 3rem;
+            height: 3rem;
+            background:transparent;
+            border-radius: 50%;
+        }
     }
-    &__logo,&__home,&__lists,&__completed{
+    }
+  
+    &__logo--item-title,&__home,&__lists,&__completed{
         background:transparent;
         font-weight:$font-bold;
         &.active{
