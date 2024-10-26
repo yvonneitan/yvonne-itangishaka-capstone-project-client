@@ -17,6 +17,11 @@
         &-title{
             padding-top: 1rem;
             color:$active-link;
+            background:transparent;
+            font-weight:$font-bold;
+            &.active{
+                color:$active-link;
+            }
         }
         &-icon{
             width: 3rem;
@@ -27,7 +32,7 @@
     }
     }
   
-    &__logo--item-title,&__home,&__lists,&__completed{
+   &__home,&__lists,&__completed{
         background:transparent;
         font-weight:$font-bold;
         &.active{
@@ -35,7 +40,6 @@
         }
         &:hover {
             opacity: 0.8;
-            transform: scale(1.1);
           }
        
     }
