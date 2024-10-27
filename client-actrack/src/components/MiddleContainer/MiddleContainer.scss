@@ -34,12 +34,16 @@
         &--label,&--time{
             background: transparent;
             margin-top:0.6rem;
+            margin-left:0.5rem;
+
 
         }
         &--checkbox{
             border-color: $text-grey;
             border-radius:45%;
             background: transparent;
+            margin-left: 1rem;
+
         }
         &--edit{
             &-button{
