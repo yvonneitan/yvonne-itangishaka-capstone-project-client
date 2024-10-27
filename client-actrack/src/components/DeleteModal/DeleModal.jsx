@@ -6,13 +6,13 @@ function DeleteModal({ isOpen, onClose, onConfirm }) {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
-        <h3>Confirm Deletion</h3>
-        <p>Are you sure you want to delete this task?</p>
-        <div className="modal-actions">
-          <button onClick={onConfirm} className="modal-confirm">Delete</button>
-          <button onClick={onClose} className="modal-cancel">Cancel</button>
-        </div>
+      <div className="modal-question">
+            {/* <h3 className="modal-question__confirm">Confirm Deletion</h3> */}
+            <p className="modal-question__sure">Are you sure you want to delete this task?</p>
+            <div className="modal-actions">
+                <button onClick={onConfirm} className="modal-actions__confirm">Delete</button>
+                <button onClick={onClose} className="modal-actions__cancel">Cancel</button>
+            </div>
       </div>
     </div>
   );

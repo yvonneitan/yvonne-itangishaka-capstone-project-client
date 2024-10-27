@@ -1,0 +1,43 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.modal-overlay{
+    display:flex;
+    background: $background-delete-container-color;
+    border-radius: 0.3125rem;
+    position:relative;
+}
+.modal-question{
+        background: $background-delete-container-color;
+        padding: 1.5625rem;
+        border-radius: 0.3125rem;
+        position: relative;
+        max-width: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+
+    &__confirm{
+        background-color: inherit;
+
+
+    }
+    &__sure{
+        background-color: inherit;
+
+        
+    }
+}
+.modal-actions{
+    display: flex;
+    flex-direction: row;
+    background: $background-delete-container-color;
+    margin-top: 0.5rem;
+    gap:0.5rem;
+    &__confirm{
+        @include primary-button;
+    }
+    &__cancel{
+        @include secondary-button
+    }
+
+}
