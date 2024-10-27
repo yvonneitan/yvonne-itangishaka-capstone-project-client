@@ -1,0 +1,104 @@
+@use "./variables" as *;
+
+@mixin tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin primary-button {
+  background: $background-log-button-color;
+  color: $white;
+  font-weight: $font-bold;
+  border-radius: 0.3125rem;
+  font-size: $font-paragraph;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border: none;
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+  width: max-content;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+}
+@mixin secondary-button{
+  background: $white;
+  color: $active-link;
+  font-weight: $font-bold;
+  border-radius: 0.3125rem;
+  font-size: $font-paragraph;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border: 0.0625rem solid $active-link;
+  cursor: pointer; 
+  transition: background-color 0.3s ease;
+  width: max-content;
+  &:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+  
+}
+@mixin input-field{
+  background:$white;
+  color:$text-grey;
+  font-weight:$font-bold;
+  border-radius: 0.3125rem;
+  font-size: $font-paragraph;
+  border: 0.0625rem solid $text-grey;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+@mixin name-password-fields{
+  display: flex;
+      flex-direction: row;
+      background-color: inherit;
+      border-bottom: 0.0625rem solid $border-grey;
+      width: 18rem;
+}
+@keyframes pulseText {
+  0% {
+    color: $active-link;
+    text-shadow: 0 0 5px $white;
+    background-color:transparent;
+
+  }
+  50% {
+    color: $pink-message;
+    text-shadow: 0 0 5px $white;
+    background-color:transparent;
+
+  }
+  100% {
+    
+    color: $yellow-message; 
+    text-shadow: 0 0 5px $text-black;
+    background-color:transparent;
+
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}

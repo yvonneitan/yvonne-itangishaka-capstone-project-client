@@ -1,13 +1,11 @@
 import React from 'react'
 import './ListsPage.scss'
+import ListsContainer from '../../components/ListsContainer/ListsContainer'
 
 function ListsPage() {
   return (
-    <div>
-        <h1>This is the Lists Page</h1>
-      
-    </div>
-  )
+
+    <ListsContainer showForm={false}/>  )
 }
 
 export default ListsPage

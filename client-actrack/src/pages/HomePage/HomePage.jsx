@@ -4,10 +4,7 @@ import ListsContainer from '../../components/ListsContainer/ListsContainer'
 
 function HomePage() {
   return (
-    <div>
-
-      
-    </div>
+    <ListsContainer/>
   )
 }
 
