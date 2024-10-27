@@ -146,6 +146,9 @@
 
             &-input {
                 @include input-field;
+                &:focus:invalid{
+                    border:1rem solid red;
+                }
               
             }
 
