@@ -3,7 +3,7 @@ import Sidebar from '../SideBar/SideBar';
 import MiddleContainer from '../MiddleContainer/MiddleContainer';
 import "./CompletedLists.scss"
 
-function CompletedLists(showForm) {
+function CompletedLists() {
   const [taskLists, setTaskLists] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]); 
   const [user, setUser] = useState(null);
