@@ -19,7 +19,7 @@ function Sidebar({
   return (
     <div className="sidebar">
       <div className="sidebar__title">
-        {user ? `${user.username} AcTrack` : "Your AcTrack"}
+        {user ? `${user.username}'s AcTrack` : "Your AcTrack"}
       </div>
       {taskLists.length === 0 ? (
         <div className="sidebar__no-list">No task lists available.</div>

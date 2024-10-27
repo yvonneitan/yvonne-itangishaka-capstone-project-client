@@ -51,7 +51,7 @@ function ListsContainer({ showForm }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const userData = await fetchData("/users/1"); // fetchData returns parsed JSON
+        const userData = await fetchData("/users/1"); 
         setUser(userData);
         await getTaskLists(userData.id);
       } catch (error) {
