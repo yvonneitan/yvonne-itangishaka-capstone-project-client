@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './MiddleContainer.scss';
 import editIcon from "../../assets/icons/edit-24px.svg";
 import DeleteModal from '../DeleteModal/DeleModal'; 
+import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+
 
 function MiddleContainer({ selectedList }) {
   const [user, setUser] = useState(null);
@@ -210,11 +212,11 @@ function MiddleContainer({ selectedList }) {
                   <span className="main-content__task--time">
                     {new Date(task.start_time).toLocaleString()} - {new Date(task.end_time).toLocaleString()}
                   </span>
+                  <button onClick={() => handleOpenDeleteModal(task.id)} className="main-content__task--delete-button">
+                  <img src={deleteIcon} alt="edit icon" className="main-content__task--edit-icon"/>
+                  </button>
                   <button onClick={() => handleEditClick(task)} className="main-content__task--edit-button">
                     <img src={editIcon} alt="edit icon" className="main-content__task--edit-icon"/>
-                  </button>
-                  <button onClick={() => handleOpenDeleteModal(task.id)} className="main-content__task--delete-button">
-                    Delete
                   </button>
                 </>
               )}
