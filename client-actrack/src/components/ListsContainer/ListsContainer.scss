@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixins" as *;
 
 .sidebar {
-    width: 30%;
+    width: 45%;
     border-radius: 0.3125rem;
     margin-top: 1rem;
     background: $background-container-color;
@@ -146,6 +146,7 @@
 
             &-input {
                 @include input-field;
+              
             }
 
             &-add-btn {
@@ -167,8 +168,9 @@
                 padding-right: 0.5rem;
                 padding-left: 1rem;
                 color: $error;
-                font-family: 'Pacifico', cursive;
-                font-weight: $font-bold;        
+                font-style: italic;
+              
+                      
             }
             &-icon{
                 background: inherit;
