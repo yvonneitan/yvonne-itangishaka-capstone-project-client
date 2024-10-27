@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './MiddleContainer.scss';
 import editIcon from "../../assets/icons/edit-24px.svg";
-import DeleteModal from '../DeleteModal/DeleModal'; 
+import DeleteModal from '../DeleteModal/DeleteModal'; 
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 
 
