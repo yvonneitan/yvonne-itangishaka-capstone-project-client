@@ -9,7 +9,7 @@ function DeleteModal({ isOpen, onClose, onConfirm, title, message, confirmLabel 
       <div className="modal-question">
         <h3 className="modal-question__confirm">{title}</h3>
         <p className="modal-question__sure">{message}</p>
-        <div className="modal__actions">
+        <div className="modal-actions">
           <button onClick={onConfirm} className="modal-actions__confirm">{confirmLabel}</button>
           <button onClick={onClose} className="modal-actions__cancel">{cancelLabel}</button>
         </div>
