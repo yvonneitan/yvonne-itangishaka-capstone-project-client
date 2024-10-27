@@ -247,7 +247,7 @@ function ListsContainer({ showForm }) {
             {taskLists.map((list) => (
               <li key={list.id} className="sidebar__lists--item">
                 {editingListId === list.id ? (
-                  <div>
+                  <div className="sidebar__lists--change">
                     <input
                       type="text"
                       value={editedListName}
