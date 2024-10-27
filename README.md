@@ -94,6 +94,10 @@ My page is divides into:
 
 [https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel]
 
+
+- Updated Mockup with functionalities
+
+[https://www.canva.com/design/DAGUybdDpqI/m3vf3ooge7lDRVVtiWid3g/view?utm_content=DAGUybdDpqI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton&mode=preview]
 ### Data
 
 **_Users:_** 
