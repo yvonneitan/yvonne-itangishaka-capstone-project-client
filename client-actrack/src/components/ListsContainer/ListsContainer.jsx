@@ -439,6 +439,8 @@ function ListsContainer({ showForm }) {
         isOpen={deleteModalOpen}
         onClose={handleCloseDeleteModal}
         onConfirm={handleConfirmDelete}
+        title="Confirm Deletion"
+        message="Are you sure you want to delete this List?"
       />
     </>
   );
