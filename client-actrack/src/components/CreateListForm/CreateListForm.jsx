@@ -1,7 +1,13 @@
-import React from 'react';
+import React from "react";
 import errorIcon from "../../assets/icons/error-24px.svg";
 
-function CreateListForm({ newListName, onInputChange, onCreateList, onCancel, inputError }) {
+function CreateListForm({
+  newListName,
+  onInputChange,
+  onCreateList,
+  onCancel,
+  inputError,
+}) {
   return (
     <div className="create__box">
       <div className="sidebar__create">
@@ -14,13 +20,30 @@ function CreateListForm({ newListName, onInputChange, onCreateList, onCancel, in
         />
         {inputError && (
           <div className="sidebar__create--error">
-            <img src={errorIcon} alt="Warning Icon" className="sidebar__create--error-icon" />
-            <div className="sidebar__create--error-message">List name cannot be Empty!</div>
+            <img
+              src={errorIcon}
+              alt="Warning Icon"
+              className="sidebar__create--error-icon"
+            />
+            <div className="sidebar__create--error-message">
+              List name cannot be Empty!
+            </div>
           </div>
         )}
         <div className="sidebar__create--buttons">
-          <button className="sidebar__create--list-add-btn" onClick={onCreateList}>Add</button>
-          <button type="button" className="sidebar__create--list-cancel-btn" onClick={onCancel}>Cancel</button>
+          <button
+            className="sidebar__create--list-add-btn"
+            onClick={onCreateList}
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            className="sidebar__create--list-cancel-btn"
+            onClick={onCancel}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

@@ -27,27 +27,6 @@ function ListsContainer({ showForm }) {
   const [listToDelete, setListToDelete] = useState(null);
   const [originalListName, setOriginalListName] = useState(""); 
 
-  // const BASE_URL = "http://localhost:8080/api"
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const response = await fetchData("/users/1");
-  //       if (!response.ok)
-  //         throw new Error("Network response for user was not ok");
-
-  //       const userData = await response.json();
-  //       setUser(userData);
-  //       await getTaskLists(userData.id);
-  //     } catch (error) {
-  //       setError("Failed to fetch user or task lists.");
-  //       console.error("Error getting user or lists:", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   getUser();
-  // }, []);
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -89,24 +68,7 @@ function ListsContainer({ showForm }) {
     setDeleteModalOpen(false);
     setListToDelete(null);
   };
-  // const handleConfirmDelete = async () => {
-  //   const idToDelete = Number(listToDelete);
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:8080/api/lists/task-lists/${idToDelete}`,
-  //       {
-  //         method: "DELETE",
-  //       }
-  //     );
-  //     if (!response.ok) throw new Error("Failed to delete task");
-
-  //     await getTaskLists(user.id);
-
-  //     handleCloseDeleteModal();
-  //   } catch (error) {
-  //     console.error("Error deleting task:", error);
-  //   }
-  // };
+  
   const handleConfirmDelete = async () => {
     const idToDelete = Number(listToDelete);
     try {
@@ -121,35 +83,6 @@ function ListsContainer({ showForm }) {
     }
   };
   
-
-  // const handleCreateNewList = async () => {
-  //   if (!newListName.trim()) {
-  //     setInputError(true);
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch(
-  //       "http://localhost:8080/api/lists/task-lists",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({ name: newListName, userId: user.id }),
-  //       }
-  //     );
-
-  //     if (!response.ok) throw new Error("Failed to create new list.");
-
-  //     await getTaskLists(user.id);
-
-  //     setNewListName("");
-  //     setInputError("");
-  //     setShowInput(false);
-  //     setShowCreateButton(true);
-  //   } catch (error) {
-  //     console.error("Error creating new list:", error);
-  //   }
-  // };
   const handleCreateNewList = async () => {
     if (!newListName.trim()) {
       setInputError(true);
@@ -209,41 +142,6 @@ function ListsContainer({ showForm }) {
     setEditedListName(originalListName);
     setInputError(false);        
 };
-
-
-  // const handleUpdateList = async () => {
-  //   if (!editedListName.trim()) {
-  //     setInputError(true);
-  //     return;
-  //   }
-
-  //   if (editedListName === originalListName) {
-  //     handleCancelEdit();
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:8080/api/lists/task-lists/${editingListId}`,
-  //       {
-  //         method: "PUT",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({ name: editedListName }),
-  //       }
-  //     );
-  //     if (!response.ok) throw new Error("Failed to update the list.");
-
-  //     await getTaskLists(user.id);
-  //     setEditingListId(null);
-  //     setEditedListName("");
-  //     setOriginalListName(""); // Clear original name
-  //   } catch (error) {
-  //     console.error("Error updating the list:", error);
-  //   }
-  // };
-
-
-  // Test a bug here
   const handleUpdateList = async () => {
     if (!editedListName.trim()) {
       setInputError(true);
@@ -265,44 +163,11 @@ function ListsContainer({ showForm }) {
       await getTaskLists(user.id);
       setEditingListId(null);
       setEditedListName("");
-      setOriginalListName(""); // Clear original name
+      setOriginalListName(""); 
     } catch (error) {
       console.error("Error updating the list:", error);
     }
   };
-  
-  // const handleCreateNewTask = async (e) => {
-  //   e.preventDefault();
-  //   const newTask = {
-  //     task: taskName,
-  //     start_time: startTime,
-  //     end_time: endTime,
-  //     list_id: selectedList,
-  //     user_id: user.id,
-  //   };
-  //   try {
-  //     const response = await fetch("http://localhost:8080/api/tasks", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(newTask),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to create new task.");
-  //     }
-  //     console.log("res", response.body);
-  //     const result = await response.json();
-  //     console.log("New task ID:", result.taskId);
-  //     console.log("Result", result);
-
-  //     getTaskLists(user.id);
-  //     handleCancelTask();
-  //   } catch (error) {
-  //     console.error("Error creating new task:", error);
-  //   }
-  // };
 
   const handleCreateNewTask = async (e) => {
     e.preventDefault();
