@@ -19,7 +19,6 @@ In today's fast-paced world, individuals often struggle to keep track of their t
 
 List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
-- **_User Authentication:_** Users can sign up, log in, and manage their accounts.
 - **_Task Creation:_** Users can add new tasks with details such as task title and due date.
 - **_Task Editing:_** Users can edit existing tasks to update details or change statuses.
 - **_Task Deletion:_** Users can remove tasks they no longer need from the lists.
@@ -85,7 +84,8 @@ List technologies that will be used in your app, including any libraries to save
 ### Mockups
 My page is divides into: 
 
-#### _Log In Page_
+#### _Log In Page_ 
+- Only checks uer name and password.
 #### _Home Page_
 #### _Lists Page_
 #### _Completed Page_
@@ -94,6 +94,10 @@ My page is divides into:
 
 [https://www.canva.com/design/DAGTqL10FMY/nZtZTZb4ehgqyXo4DjEPJA/view?utm_content=DAGTqL10FMY&utm_campaign=share_your_design&utm_medium=link&utm_source=shareyourdesignpanel]
 
+
+- Updated Mockup with functionalities
+
+[https://www.canva.com/design/DAGUybdDpqI/m3vf3ooge7lDRVVtiWid3g/view?utm_content=DAGUybdDpqI&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton&mode=preview]
 ### Data
 
 **_Users:_** 
@@ -102,21 +106,28 @@ My page is divides into:
     - id: A unique identifier for the user.
     - username: The name the user goes by within the application.
     - email: The user's email, used for authentication.
-    - password: A hashed version of the user's password for account security.
+    - password: Hardcoded password to the log in
+    - created_at - the time a list is created.
+
 - _Relationship:_ A user can have multiple tasks associated with them.
 
 **_Tasks:_**
 
 - Each task has the following properties:
-    - id: A unique identifier for the task.
-    - title: The name or description of the task.
-    - due_time: The time by which the task should be completed.
-    - priority: The importance level of the task (high, medium, low).
-    - status: The current state of the task (e.g., active, completed).
     - user_id: A reference to the user who created the task (foreign key to Users table).
+    - list_id the id that reference to the list name in the task_lists table
+    - task: The name or description of the task.
+    - start_time: The time by which the task should start
+    - end_time: The time by which the task should be completed.
+    - status: The current state of the task (active, completed).
+   
 - _Relationship:_ Each task is associated with one user, but a user can have many tasks.
 
-
+**_Task_lists:_**
+  - user_id: A unique identifier for use the list belong to.
+  - name: The name or description of the list.
+  - created_at - the time a list is created.
+  - user_id: A reference to the user who created the list (foreign key to Users table).
 **_Relationships_**
 
 _One-to-Many Relationship:_
@@ -133,8 +144,9 @@ List endpoints that your server will implement, including HTTP methods, paramete
 Request Body:
 ```
 {
-  "email": "user@example.com",
-  "password": "password123"
+    "username": "Yvonne",
+    "email": "john.dede@example.com",
+    "password": "securepassword"
 }
 ```
 
@@ -150,30 +162,6 @@ Response:
     "email": "user@example.com"
   }
 }
-```
-
-
-**_POST /signup:_** Allows a new user to create an account.
-Request Body:
-```
-{
-  "username": "yvonne_itan",
-  "email": "user@example.com",
-  "password": "password123"
-}
-```
-
-Response:
-```
-{
-  "message": "Account created successfully",
-  "user": {
-    "id": 1,
-    "username": "yvonne_itan",
-    "email": "user@example.com"
-  }
-}
-
 ```
 **_GET /tasks:_** Fetches all tasks for a logged-in user.
 
@@ -204,26 +192,17 @@ Response:
 Request body:
 ```
 {
-  "title": "Groceries",
-  "due_time_from": "09:00",  
-  "due_time_to": "11:00",  
-  "priority": "High",
-  "status": "active"
+   "task": "Test test Test",
+    "start_time": "2024-10-23T10:00",
+    "end_time": "2024-10-23T11:00",
+    "list_id": 1,
+    "user_id": 1 
 }
 ```
 Response:
 ```
 {
-  "message": "Task created successfully",
-  "task": {
-    "id": 103,
-    "title": "Groceries",
-    "due_time_from": "09:00",
-    "due_time_to": "11:00",
-    "priority": "High",
-    "status": "active",
-    "user_id": 1
-  }
+    "message": "Task added!"
 }
 ```
 **_PUT /tasks/:id:_** Edits an existing task by its ID.
@@ -283,7 +262,7 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
     ```
     - Day 4-5: User Authentication
         - Implement Signup and Login Functionality:
-        Create endpoints for user authentication (signup, login) and implement JWT for session management.
+        Create endpoints for user authentication (login)
     ```
     ```
     - Day 6-7: Task Management Features
@@ -321,8 +300,8 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 
 - Intergrade tasks into calender
 - Set up reminders
-- Implementt log in to completion
-- forgot password Functionality
 - Expand to groups tasks and collaborations
+- User Authentication :Users can sign up, log in, and manage their accounts.
+
 
 

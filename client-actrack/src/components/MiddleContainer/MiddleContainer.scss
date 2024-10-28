@@ -1,0 +1,107 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    padding:1rem;
+    background-color: transparent;
+    width: 65vw;
+    &__greeting{
+        color: $text-black;
+        
+    }
+    &__date{
+        color:$text-grey;
+        font-weight:$font-bold;
+
+    }
+    &__task-container{
+        display: flex;
+        flex-direction:column;
+        width: auto;
+    }
+    &__task{
+        background:$white;
+        color:$text-grey;
+        font-weight:$font-bold;
+        border-radius: 0.3125rem;
+        font-size: $font-paragraph;
+        margin: 0;
+        margin-top:0.5rem;
+        display: flex;
+        flex-direction: row;
+        &--label,&--time{
+            background: transparent;
+            margin-top:0.6rem;
+            margin-left:0.5rem;
+
+
+        }
+        &--checkbox{
+            border-color: $text-grey;
+            border-radius:45%;
+            background: transparent;
+            margin-left: 1rem;
+
+        }
+        &--edit{
+            &-button{
+            border: none;
+            background-color: transparent;
+            margin-left: 1rem;
+            }
+            &-icon{
+                border: none;
+                background-color: transparent;
+            }
+            &-input{
+                @include input-field;
+                width:auto;
+                border:none
+            }
+            &-time{
+                @include input-field;
+                padding:0;
+                border:none
+            }
+            
+        }
+        &--delete-icon{
+            background-color: transparent;
+            
+        }
+        &--save-button{
+            @include primary-button;
+            margin-left:0.5rem;
+        }
+        &--cancel-button{
+            @include secondary-button;
+            margin-left:0.5rem;
+        }
+        &--delete-button{
+            border: none;
+            background-color: transparent;
+            margin-left: 1rem;
+        }
+    }
+    &__error--task{
+        color:$pink-message;
+        font-weight:$font-bold;
+        font-size: $font-subheader;
+        padding-top:2rem;
+        animation: pulseText 6s infinite ease;
+
+
+    }
+    &__select--list{
+        color:$active-link;
+        font-weight:$font-bold;
+        font-size: $font-subheader;
+        padding-top:2rem;
+        animation: pulseText 6s infinite ease-in-out;
+        
+
+    }
+
+}

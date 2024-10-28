@@ -1,0 +1,81 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: $background-container-color;
+  border-radius: 0.3125rem;
+  padding: 1rem;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    &--item {
+      display: flex;
+      flex-direction: row;
+      background: transparent;
+      &-icon {
+        width: 3rem;
+        height: 3rem;
+        background: transparent;
+        border-radius: 50%;
+      }
+      &-title {
+        padding-top: 1rem;
+        color: $active-link;
+        background: transparent;
+        font-weight: $font-bold;
+        &.active {
+          color: $active-link;
+        }
+      }
+    }
+  }
+
+  &__home,
+  &__lists,
+  &__completed {
+    background: transparent;
+    font-weight: $font-bold;
+    &.active {
+      color: $active-link;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    gap: 8rem;
+    font-weight: $font-bold;
+    background: transparent;
+
+    &.active {
+      color: $active-link;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    background: transparent;
+
+    &-icon {
+      @include primary-button;
+      color: $white;
+      padding: 0.7rem 2rem;
+      border-radius: 2rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
