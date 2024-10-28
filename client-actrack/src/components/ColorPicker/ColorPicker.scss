@@ -9,25 +9,28 @@
   font-size: $font-paragraph;
   padding-right: 0.5rem;
   padding-left: 0.5rem;
+  border: 0.0625rem solid $pink-message;
+
   &__title {
     font-size: 1rem;
     font-weight: bold;
     color: $text-black;
     margin: 0;
+    
   }
 
   &__choice {
     width: 2.5rem;
     height: 2.5rem;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 2rem;
     cursor: pointer;
     transition: transform 0.2s ease;
 
     &:hover,
     &:focus {
       transform: scale(1.1);
-      outline: 0.125rem solid $border-blue;
+      outline: 0.175rem solid $border-blue;
     }
   }
 }
