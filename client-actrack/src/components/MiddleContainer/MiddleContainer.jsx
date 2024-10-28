@@ -530,6 +530,7 @@ function MiddleContainer({ selectedList }) {
     const getUser = async () => {
       try {
         const response = await fetch("http://localhost:8080/api/users/1");
+        // console.log("Delete response:", response); 
         if (!response.ok)
           throw new Error("Network response for user was not ok");
         const userData = await response.json();
@@ -544,7 +545,11 @@ function MiddleContainer({ selectedList }) {
   useEffect(() => {
     if (selectedList) {
       setTasks([]);
-      const getTasks = async () => {
+      
+      getTasks();
+    }
+  }, [selectedList]);
+  const getTasks = async () => {
         try {
           const response = await fetch(
             `http://localhost:8080/api/tasks?listName=${selectedList}`
@@ -557,9 +562,6 @@ function MiddleContainer({ selectedList }) {
           console.error("Error fetching tasks:", error);
         }
       };
-      getTasks();
-    }
-  }, [selectedList]);
 
   // const handleToggleComplete = async (taskId, updatedStatus) => {
   //   try {
@@ -646,7 +648,26 @@ function MiddleContainer({ selectedList }) {
     setTaskToDelete(null);
   };
 
+  // const handleConfirmDelete = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `http://localhost:8080/api/tasks/${taskToDelete}`,
+  //       {
+  //         method: "DELETE",
+  //       }
+  //     );
+  //     if (!response.ok) throw new Error("Failed to delete task");
+
+  //     setTasks(tasks.filter((task) => task.id !== taskToDelete));
+  //     handleCloseDeleteModal();
+  //   } catch (error) {
+  //     console.error("Error deleting task:", error);
+  //   }
+  // };
   const handleConfirmDelete = async () => {
+    console.log("Deleting task with ID:", taskToDelete); // Check the ID being deleted
+    console.log("Deleting task with ID:", typeof(taskToDelete)); // Check the ID being deleted
+
     try {
       const response = await fetch(
         `http://localhost:8080/api/tasks/${taskToDelete}`,
@@ -655,13 +676,19 @@ function MiddleContainer({ selectedList }) {
         }
       );
       if (!response.ok) throw new Error("Failed to delete task");
-
-      setTasks(tasks.filter((task) => task.id !== taskToDelete));
-      handleCloseDeleteModal();
+  
+      // Here, we filter out the task that was just deleted
+      setTasks((prevTasks) => 
+        prevTasks.filter((task) => task.id !== taskToDelete)
+      );
+  
+      handleCloseDeleteModal(); // Close the delete modal
     } catch (error) {
       console.error("Error deleting task:", error);
     }
   };
+  
+  
 
   const formatDateForDatabase = (dateString) => {
     const date = new Date(dateString);
@@ -739,11 +766,6 @@ function MiddleContainer({ selectedList }) {
           tasks.map((task) => (
             <div key={task.id} className="main-content__task">
               <input
-                // type="checkbox"
-                // id={`task-${task.id}`}
-                // className="main-content__task--checkbox"
-                // checked={task.completed}
-                // onChange={() => handleToggleComplete(task.id)}
                 type="checkbox"
                 id={`task-${task.id}`}
                 className="main-content__task--checkbox"
@@ -819,7 +841,9 @@ function MiddleContainer({ selectedList }) {
               )}
             </div>
           ))
-        ) : selectedList ? (
+        // ) :  selectedList && selectedList.id ?  (
+        ) :selectedList.id ?  (
+
           <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>
         ) : (
           <div className="main-content__select--list">
