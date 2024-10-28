@@ -563,32 +563,7 @@ function MiddleContainer({ selectedList }) {
         }
       };
 
-  // const handleToggleComplete = async (taskId, updatedStatus) => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:8080/api/tasks/${taskId}`,
-  //       {
-  //         method: "PUT",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({ is_completed: updatedStatus ? 1 : 0 }),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to update task");
-  //     }
-
-  //     const data = await response.json();
-
-  //     setTasks((prevTasks) =>
-  //       prevTasks.map((task) =>
-  //         task.id === taskId ? { ...task, is_completed: updatedStatus } : task
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error("Error updating task completion:", error);
-  //   }
-  // };
+ 
 
   const handleToggleComplete = async (taskId, updatedStatus) => {
     try {
@@ -605,12 +580,6 @@ function MiddleContainer({ selectedList }) {
         throw new Error("Failed to update task");
       }
   
-      // const updatedTaskResponse = await response.json(); // Assuming you return the updated task from your API
-  
-      // setTasks((prevTasks) =>
-      //   prevTasks.map((task) =>
-      //     task.id === taskId ? { ...task, is_completed: updatedTaskResponse.is_completed } : task
-      //   )
       const updatedTaskResponse = await response.json();
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
@@ -648,25 +617,9 @@ function MiddleContainer({ selectedList }) {
     setTaskToDelete(null);
   };
 
-  // const handleConfirmDelete = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:8080/api/tasks/${taskToDelete}`,
-  //       {
-  //         method: "DELETE",
-  //       }
-  //     );
-  //     if (!response.ok) throw new Error("Failed to delete task");
-
-  //     setTasks(tasks.filter((task) => task.id !== taskToDelete));
-  //     handleCloseDeleteModal();
-  //   } catch (error) {
-  //     console.error("Error deleting task:", error);
-  //   }
-  // };
   const handleConfirmDelete = async () => {
-    console.log("Deleting task with ID:", taskToDelete); // Check the ID being deleted
-    console.log("Deleting task with ID:", typeof(taskToDelete)); // Check the ID being deleted
+    console.log("Deleting task with ID:", taskToDelete); 
+    console.log("Deleting task with ID:", typeof(taskToDelete)); 
 
     try {
       const response = await fetch(
@@ -677,12 +630,11 @@ function MiddleContainer({ selectedList }) {
       );
       if (!response.ok) throw new Error("Failed to delete task");
   
-      // Here, we filter out the task that was just deleted
       setTasks((prevTasks) => 
         prevTasks.filter((task) => task.id !== taskToDelete)
       );
   
-      handleCloseDeleteModal(); // Close the delete modal
+      handleCloseDeleteModal(); 
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -769,7 +721,7 @@ function MiddleContainer({ selectedList }) {
                 type="checkbox"
                 id={`task-${task.id}`}
                 className="main-content__task--checkbox"
-                checked={task.is_completed === 1} // Assuming is_completed is 1 for completed and 0 for not completed
+                checked={task.is_completed === 1} 
                 onChange={() => handleToggleComplete(task.id)}
               />
               {editTaskId === task.id ? (
@@ -841,7 +793,6 @@ function MiddleContainer({ selectedList }) {
               )}
             </div>
           ))
-        // ) :  selectedList && selectedList.id ?  (
         ) :selectedList.id ?  (
 
           <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>

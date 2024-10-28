@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function TaskForm({
   taskName,
@@ -11,11 +11,13 @@ function TaskForm({
   setSelectedList,
   taskLists,
   onCancelTask,
-  onCreateNewTask
+  onCreateNewTask,
 }) {
   return (
     <form onSubmit={onCreateNewTask} className="task-form__container">
-      <label htmlFor="task-name" className="task-form__label">Task:</label>
+      <label htmlFor="task-name" className="task-form__label">
+        Task:
+      </label>
       <input
         type="text"
         id="task-name"
@@ -25,7 +27,9 @@ function TaskForm({
         onChange={(e) => setTaskName(e.target.value)}
         required
       />
-      <label htmlFor="start-time" className="task-form__label">Start date and time:</label>
+      <label htmlFor="start-time" className="task-form__label">
+        Start date and time:
+      </label>
       <input
         type="datetime-local"
         id="start-time"
@@ -34,7 +38,9 @@ function TaskForm({
         onChange={(e) => setStartTime(e.target.value)}
         required
       />
-      <label htmlFor="end-time" className="task-form__label">End date and time :</label>
+      <label htmlFor="end-time" className="task-form__label">
+        End date and time :
+      </label>
       <input
         type="datetime-local"
         id="end-time"
@@ -43,7 +49,9 @@ function TaskForm({
         onChange={(e) => setEndTime(e.target.value)}
         required
       />
-      <label htmlFor="task-list" className="task-form__label">List:</label>
+      <label htmlFor="task-list" className="task-form__label">
+        List:
+      </label>
       <select
         id="task-list"
         className="task-form__select"
@@ -53,17 +61,25 @@ function TaskForm({
       >
         <option value="">Select a list</option>
         {taskLists.map((list) => (
-          <option key={list.id} value={list.id}>{list.name}</option>
+          <option key={list.id} value={list.id}>
+            {list.name}
+          </option>
         ))}
       </select>
       <div className="task-form__btn">
-        <button type="submit" className="task-form__btn--submit">Add Task</button>
-        <button type="button" className="task-form__btn--cancel" onClick={onCancelTask}>Cancel</button>
+        <button type="submit" className="task-form__btn--submit">
+          Add Task
+        </button>
+        <button
+          type="button"
+          className="task-form__btn--cancel"
+          onClick={onCancelTask}
+        >
+          Cancel
+        </button>
       </div>
     </form>
   );
 }
 
 export default TaskForm;
-
-
