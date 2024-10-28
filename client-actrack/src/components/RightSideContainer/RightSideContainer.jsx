@@ -15,21 +15,22 @@ function RightSideContainer() {
   };
 
   return (
-    <div className="container">
-      <img src={downIcon} className="container__menu" alt="Menu Icon" onClick={toggleModal} />
+    // <div className="container">
+    //   <img src={downIcon} className="container__menu" alt="Menu Icon" onClick={toggleModal} />
 
-      <p className="container__title">Today</p>   
+    //   <p className="container__title">Today</p>   
 
-      <img src={menuIcon} className="container__menu" alt="Menu Icon" />
+    //   <img src={menuIcon} className="container__menu" alt="Menu Icon" />
 
-      <TaskManager isOpen={isModalOpen} onClose={toggleModal}>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          inline 
-        />
-      </TaskManager>
-    </div>
+    //   <TaskManager isOpen={isModalOpen} onClose={toggleModal}>
+    //     <DatePicker
+    //       selected={startDate}
+    //       onChange={(date) => setStartDate(date)}
+    //       inline 
+    //     />
+    //   </TaskManager>
+    // </div>
+    <></>
   );
 }
 

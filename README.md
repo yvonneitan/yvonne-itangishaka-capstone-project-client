@@ -301,7 +301,7 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
 - Intergrade tasks into calender
 - Set up reminders
 - Expand to groups tasks and collaborations
-- User Authentication:Users can sign up, log in, and manage their accounts.
+- User Authentication :Users can sign up, log in, and manage their accounts.
 
 
 

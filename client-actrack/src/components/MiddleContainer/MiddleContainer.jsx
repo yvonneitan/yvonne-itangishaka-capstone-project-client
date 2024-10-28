@@ -530,6 +530,7 @@ function MiddleContainer({ selectedList }) {
     const getUser = async () => {
       try {
         const response = await fetch("http://localhost:8080/api/users/1");
+        // console.log("Delete response:", response); 
         if (!response.ok)
           throw new Error("Network response for user was not ok");
         const userData = await response.json();
@@ -544,7 +545,11 @@ function MiddleContainer({ selectedList }) {
   useEffect(() => {
     if (selectedList) {
       setTasks([]);
-      const getTasks = async () => {
+      
+      getTasks();
+    }
+  }, [selectedList]);
+  const getTasks = async () => {
         try {
           const response = await fetch(
             `http://localhost:8080/api/tasks?listName=${selectedList}`
@@ -557,36 +562,8 @@ function MiddleContainer({ selectedList }) {
           console.error("Error fetching tasks:", error);
         }
       };
-      getTasks();
-    }
-  }, [selectedList]);
 
-  // const handleToggleComplete = async (taskId, updatedStatus) => {
-  //   try {
-  //     const response = await fetch(
-  //       `http://localhost:8080/api/tasks/${taskId}`,
-  //       {
-  //         method: "PUT",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({ is_completed: updatedStatus ? 1 : 0 }),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to update task");
-  //     }
-
-  //     const data = await response.json();
-
-  //     setTasks((prevTasks) =>
-  //       prevTasks.map((task) =>
-  //         task.id === taskId ? { ...task, is_completed: updatedStatus } : task
-  //       )
-  //     );
-  //   } catch (error) {
-  //     console.error("Error updating task completion:", error);
-  //   }
-  // };
+ 
 
   const handleToggleComplete = async (taskId, updatedStatus) => {
     try {
@@ -603,12 +580,6 @@ function MiddleContainer({ selectedList }) {
         throw new Error("Failed to update task");
       }
   
-      // const updatedTaskResponse = await response.json(); // Assuming you return the updated task from your API
-  
-      // setTasks((prevTasks) =>
-      //   prevTasks.map((task) =>
-      //     task.id === taskId ? { ...task, is_completed: updatedTaskResponse.is_completed } : task
-      //   )
       const updatedTaskResponse = await response.json();
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
@@ -647,6 +618,9 @@ function MiddleContainer({ selectedList }) {
   };
 
   const handleConfirmDelete = async () => {
+    console.log("Deleting task with ID:", taskToDelete); 
+    console.log("Deleting task with ID:", typeof(taskToDelete)); 
+
     try {
       const response = await fetch(
         `http://localhost:8080/api/tasks/${taskToDelete}`,
@@ -655,13 +629,18 @@ function MiddleContainer({ selectedList }) {
         }
       );
       if (!response.ok) throw new Error("Failed to delete task");
-
-      setTasks(tasks.filter((task) => task.id !== taskToDelete));
-      handleCloseDeleteModal();
+  
+      setTasks((prevTasks) => 
+        prevTasks.filter((task) => task.id !== taskToDelete)
+      );
+  
+      handleCloseDeleteModal(); 
     } catch (error) {
       console.error("Error deleting task:", error);
     }
   };
+  
+  
 
   const formatDateForDatabase = (dateString) => {
     const date = new Date(dateString);
@@ -739,15 +718,10 @@ function MiddleContainer({ selectedList }) {
           tasks.map((task) => (
             <div key={task.id} className="main-content__task">
               <input
-                // type="checkbox"
-                // id={`task-${task.id}`}
-                // className="main-content__task--checkbox"
-                // checked={task.completed}
-                // onChange={() => handleToggleComplete(task.id)}
                 type="checkbox"
                 id={`task-${task.id}`}
                 className="main-content__task--checkbox"
-                checked={task.is_completed === 1} // Assuming is_completed is 1 for completed and 0 for not completed
+                checked={task.is_completed === 1} 
                 onChange={() => handleToggleComplete(task.id)}
               />
               {editTaskId === task.id ? (
@@ -819,7 +793,8 @@ function MiddleContainer({ selectedList }) {
               )}
             </div>
           ))
-        ) : selectedList ? (
+        ) :selectedList.id ?  (
+
           <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>
         ) : (
           <div className="main-content__select--list">

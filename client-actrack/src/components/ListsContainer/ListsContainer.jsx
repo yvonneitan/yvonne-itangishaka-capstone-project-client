@@ -5,6 +5,7 @@ import errorIcon from "../../assets/icons/error-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import { fetchData } from "../../utils/utils.js";
 
 function ListsContainer({ showForm }) {
   const [taskLists, setTaskLists] = useState([]);
@@ -29,11 +30,7 @@ function ListsContainer({ showForm }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/users/1");
-        if (!response.ok)
-          throw new Error("Network response for user was not ok");
-
-        const userData = await response.json();
+        const userData = await fetchData("/users/1"); 
         setUser(userData);
         await getTaskLists(userData.id);
       } catch (error) {
@@ -43,26 +40,19 @@ function ListsContainer({ showForm }) {
         setLoading(false);
       }
     };
-
+  
     getUser();
   }, []);
-
+  
   const getTaskLists = async (userId) => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/lists/task-lists?userId=${userId}`
-      );
-      if (!response.ok)
-        throw new Error("Network response for task lists was not ok");
-
-      const data = await response.json();
+      const data = await fetchData(`/lists/task-lists?userId=${userId}`);
       setTaskLists(data);
     } catch (error) {
       setError("Failed to fetch task lists.");
       console.error("Error fetching task lists:", error);
     }
   };
-
   const handleListClick = (listName) => setSelectedList(listName);
 
   const handleNewListChange = (e) => {
@@ -78,47 +68,36 @@ function ListsContainer({ showForm }) {
     setDeleteModalOpen(false);
     setListToDelete(null);
   };
+  
   const handleConfirmDelete = async () => {
     const idToDelete = Number(listToDelete);
-    console.log("Attempting to delete task list with ID:", idToDelete);
-
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/lists/task-lists/${idToDelete}`,
-        {
-          method: "DELETE",
-        }
-      );
-      if (!response.ok) throw new Error("Failed to delete task");
-
+      await fetchData(`/lists/task-lists/${idToDelete}`, {
+        method: "DELETE",
+      });
+      
       await getTaskLists(user.id);
-
       handleCloseDeleteModal();
     } catch (error) {
       console.error("Error deleting task:", error);
     }
   };
-
+  
   const handleCreateNewList = async () => {
     if (!newListName.trim()) {
       setInputError(true);
       return;
     }
-
+  
     try {
-      const response = await fetch(
-        "http://localhost:8080/api/lists/task-lists",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: newListName, userId: user.id }),
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to create new list.");
-
+      await fetchData("/lists/task-lists", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: newListName, userId: user.id }),
+      });
+  
       await getTaskLists(user.id);
-
+  
       setNewListName("");
       setInputError("");
       setShowInput(false);
@@ -127,6 +106,7 @@ function ListsContainer({ showForm }) {
       console.error("Error creating new list:", error);
     }
   };
+  
   const handleShowInput = () => {
     setShowInput(true);
     setShowCreateButton(false);
@@ -162,40 +142,36 @@ function ListsContainer({ showForm }) {
     setEditedListName(originalListName);
     setInputError(false);        
 };
-
-
   const handleUpdateList = async () => {
     if (!editedListName.trim()) {
       setInputError(true);
       return;
     }
-
+  
     if (editedListName === originalListName) {
       handleCancelEdit();
       return;
     }
-
+  
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/lists/task-lists/${editingListId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: editedListName }),
-        }
-      );
-      if (!response.ok) throw new Error("Failed to update the list.");
-
+      await fetchData(`/lists/task-lists/${editingListId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: editedListName }),
+      });
+  
       await getTaskLists(user.id);
       setEditingListId(null);
       setEditedListName("");
-      setOriginalListName(""); // Clear original name
+      setOriginalListName(""); 
     } catch (error) {
       console.error("Error updating the list:", error);
     }
   };
+
   const handleCreateNewTask = async (e) => {
     e.preventDefault();
+    
     const newTask = {
       task: taskName,
       start_time: startTime,
@@ -203,30 +179,26 @@ function ListsContainer({ showForm }) {
       list_id: selectedList,
       user_id: user.id,
     };
+  
     try {
-      const response = await fetch("http://localhost:8080/api/tasks", {
+      const result = await fetchData("/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(newTask),
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to create new task.");
-      }
-      console.log("res", response.body);
-      const result = await response.json();
+  
       console.log("New task ID:", result.taskId);
       console.log("Result", result);
-
-      getTaskLists(user.id);
+  
+      await getTaskLists(user.id);
       handleCancelTask();
     } catch (error) {
       console.error("Error creating new task:", error);
     }
   };
-
+  
   if (loading) {
     return <div className="sidebar">Loading...</div>;
   }
@@ -252,7 +224,6 @@ function ListsContainer({ showForm }) {
                       type="text"
                       value={editedListName}
                       onChange={handleEditChange}
-                      onBlur={handleUpdateList} 
                       className="sidebar__lists--edit-input"
                     />
                     <button
