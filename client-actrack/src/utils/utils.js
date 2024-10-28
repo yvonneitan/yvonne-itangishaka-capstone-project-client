@@ -1,10 +1,9 @@
 // navigation function
 export const handleNav = (navigation, path) => {
-    navigation(path);
-  };
-  
+  navigation(path);
+};
 
-  // api
+// api
 const BASE_URL = "http://localhost:8080/api";
 
 export async function fetchData(endpoint, options = {}) {

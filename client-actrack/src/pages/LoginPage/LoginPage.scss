@@ -2,17 +2,16 @@
 @use "../../styles/partials/mixins" as *;
 
 .login-container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    max-width: 25rem;
-    height: 80vh;
-    background: $background-container-color;
-    padding: 1rem;
-    margin: 1rem auto; 
-    border-radius: 0.3125rem;
-    gap: 2rem;
-
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 25rem;
+  height: 80vh;
+  background: $background-container-color;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 0.3125rem;
+  gap: 2rem;
 
   &__header {
     background-color: transparent;
@@ -58,14 +57,12 @@
       border: none;
       outline: none;
       width: 18rem;
-
     }
     &--icon {
       width: 2rem;
     }
     &--items {
-    @include name-password-fields;
-      
+      @include name-password-fields;
     }
   }
   &__label {
@@ -90,32 +87,28 @@
     padding-left: 5rem;
     border-radius: 2rem;
     margin-left: 5rem;
-
   }
-  &__guide{
+  &__guide {
     font-weight: $font-bold;
-    font-size:smaller;
+    font-size: smaller;
     color: $text-black;
     background-color: transparent;
     margin-left: 5rem;
 
-    &--sign{
-        display: flex;
-        flex-direction: row;
+    &--sign {
+      display: flex;
+      flex-direction: row;
+      background-color: inherit;
+      &-up {
         background-color: inherit;
-        &-up{
-        background-color: inherit;
-        font-size:smaller;
+        font-size: smaller;
         font-weight: $font-bold;
         text-decoration: underline;
         color: $active-link;
-        }
-
+      }
     }
-
-
   }
-  &__error{
+  &__error {
     background-color: transparent;
     color: $error;
   }
