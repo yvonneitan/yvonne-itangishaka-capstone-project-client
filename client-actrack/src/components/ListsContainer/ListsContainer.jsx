@@ -359,7 +359,6 @@ function ListsContainer({ showForm }) {
                       type="text"
                       value={editedListName}
                       onChange={handleEditChange}
-                      onBlur={handleUpdateList} 
                       className="sidebar__lists--edit-input"
                     />
                     <button
