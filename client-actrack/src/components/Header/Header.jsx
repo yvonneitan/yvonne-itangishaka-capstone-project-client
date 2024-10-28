@@ -1,17 +1,19 @@
-import React from "react";
+
+import React, { useRef } from "react";
 import "./Header.scss";
 import { useNavigate, useLocation } from "react-router-dom";
 import { handleNav } from "../../utils/utils";
 import logoIcon from "../../assets/icons/actrack-logo.png";
+import ColorPicker from "../ColorPicker/ColorPicker";
 
-function Header() {
+function Header({targetRef}) {
   const navigate = useNavigate();
   const location = useLocation();
-
   const isLoginPage = location.pathname === "/";
+  const headerRef = useRef(null);
 
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <div className="header__logo--item" onClick={() => handleNav(navigate, "/home")}>
         <img src={logoIcon} alt="logo image" className="header__logo--item-icon" />
         <p className="header__logo--item-title">AcTrack</p>
@@ -38,6 +40,7 @@ function Header() {
           </p>
         </div>
       )}
+       <ColorPicker targetRef={targetRef} />
       <div className="header__profile">
         <p
           className="header__profile-icon"
@@ -46,6 +49,7 @@ function Header() {
           {isLoginPage ? "Sign in" : "Yvonne"}
         </p>
       </div>
+     
     </header>
   );
 }
