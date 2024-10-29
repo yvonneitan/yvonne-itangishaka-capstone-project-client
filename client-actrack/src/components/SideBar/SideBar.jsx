@@ -1,6 +1,6 @@
-import React from 'react';
-import ListItem from '../ListItem/ListItem';
-import CreateListForm from '../CreateListForm/CreateListForm';
+import React from "react";
+import ListItem from "../ListItem/ListItem";
+import CreateListForm from "../CreateListForm/CreateListForm";
 
 function Sidebar({
   user,
@@ -14,7 +14,6 @@ function Sidebar({
   onShowInput,
   inputError,
   onCancelCreateList,
-  
 }) {
   return (
     <div className="sidebar">
@@ -26,7 +25,7 @@ function Sidebar({
       ) : (
         <ul className="sidebar__lists">
           {taskLists.map((list) => (
-            <ListItem key={list.id} list={list} onListClick={onListClick} />
+            <ListItem key={list.id} list={list} onListClick={onListClick} isOpen={selectedList === list.id}/>
           ))}
         </ul>
       )}
@@ -39,7 +38,9 @@ function Sidebar({
           inputError={inputError}
         />
       ) : (
-        <button className="sidebar__new--btn" onClick={onShowInput}>+ Create new List ⌘L</button>
+        <button className="sidebar__new--btn" onClick={onShowInput}>
+          + Create new List ⌘L
+        </button>
       )}
     </div>
   );
