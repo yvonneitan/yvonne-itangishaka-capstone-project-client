@@ -46,7 +46,7 @@
       &:hover {
         opacity: 0.8;
         transform: scale(1.1);
-      }
+      }   
     }
     &--count {
       background-color: $background-count-button-color;
@@ -65,18 +65,20 @@
       @include input-field;
       justify-content: center;
       border: none;
+      
     }
 
     &__no-list {
       background: $white;
       border: none;
-      color: $text-grey;
+      color: $active-link;
       font-weight: $font-bold;
       border-radius: 0.3125rem;
       font-size: $font-paragraph;
       padding: 1rem;
       width: 100%;
       margin-top: 1rem;
+      margin-left:0.5rem;
     }
     &--change {
       background-color: transparent;
