@@ -25,7 +25,7 @@ function Sidebar({
       ) : (
         <ul className="sidebar__lists">
           {taskLists.map((list) => (
-            <ListItem key={list.id} list={list} onListClick={onListClick} />
+            <ListItem key={list.id} list={list} onListClick={onListClick} isOpen={selectedList === list.id}/>
           ))}
         </ul>
       )}
