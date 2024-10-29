@@ -71,7 +71,7 @@ function CompletedLists() {
       <div className="task-completed">
         <MiddleContainer selectedList={selectedList} />
         <h2 className="task-completed__title">Completed Tasks!</h2>
-        <ul>
+        <ul className="task-completed__list">
           {completedTasks.length === 0 ? (
             <p className="task-completed__absent">
               No completed tasks available.
