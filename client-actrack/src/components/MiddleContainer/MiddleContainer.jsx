@@ -3,6 +3,7 @@ import "./MiddleContainer.scss";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
+import { fetchData } from "../../utils/utils.js";
 
 function MiddleContainer({ selectedList }) {
   const [user, setUser] = useState(null);
@@ -17,10 +18,7 @@ function MiddleContainer({ selectedList }) {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/users/1");
-        if (!response.ok)
-          throw new Error("Network response for user was not ok");
-        const userData = await response.json();
+        const userData = await fetchData("/users/1");
         setUser(userData);
       } catch (error) {
         console.error("Error getting user:", error);
@@ -32,54 +30,34 @@ function MiddleContainer({ selectedList }) {
   useEffect(() => {
     if (selectedList) {
       setTasks([]);
-      
       getTasks();
     }
   }, [selectedList]);
-  const getTasks = async () => {
-        try {
-          const response = await fetch(
-            `http://localhost:8080/api/tasks?listName=${selectedList}`
-          );
-          if (!response.ok)
-            throw new Error("Network response for tasks was not ok");
-          const tasksData = await response.json();
-          setTasks(tasksData);
-        } catch (error) {
-          console.error("Error fetching tasks:", error);
-        }
-      };
 
- 
+  const getTasks = async () => {
+    try {
+      const tasksData = await fetchData(`/tasks?listName=${selectedList}`);
+      setTasks(tasksData);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
+  };
 
   const handleToggleComplete = async (taskId, updatedStatus) => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/tasks/${taskId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ is_completed: updatedStatus ? 1 : 0 }),
-        }
-      );
-  
-      if (!response.ok) {
-        throw new Error("Failed to update task");
-      }
-  
-      const updatedTaskResponse = await response.json();
+      const updatedTaskResponse = await fetchData(`/tasks/${taskId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ is_completed: updatedStatus ? 1 : 0 }),
+      });
       setTasks((prevTasks) =>
-        prevTasks.map((task) =>
-          task.id === taskId ? updatedTaskResponse : task
-        )
+        prevTasks.map((task) => (task.id === taskId ? updatedTaskResponse : task))
       );
-      
-      
     } catch (error) {
       console.error("Error updating task completion:", error);
     }
   };
-  
+
   const handleEditClick = (task) => {
     setEditTaskId(task.id);
     setTaskEditValue(task.task);
@@ -105,29 +83,14 @@ function MiddleContainer({ selectedList }) {
   };
 
   const handleConfirmDelete = async () => {
-    console.log("Deleting task with ID:", taskToDelete); 
-    console.log("Deleting task with ID:", typeof(taskToDelete)); 
-
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/tasks/${taskToDelete}`,
-        {
-          method: "DELETE",
-        }
-      );
-      if (!response.ok) throw new Error("Failed to delete task");
-  
-      setTasks((prevTasks) => 
-        prevTasks.filter((task) => task.id !== taskToDelete)
-      );
-  
-      handleCloseDeleteModal(); 
+      await fetchData(`/tasks/${taskToDelete}`, { method: "DELETE" });
+      setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskToDelete));
+      handleCloseDeleteModal();
     } catch (error) {
       console.error("Error deleting task:", error);
     }
   };
-  
-  
 
   const formatDateForDatabase = (dateString) => {
     const date = new Date(dateString);
@@ -136,20 +99,15 @@ function MiddleContainer({ selectedList }) {
 
   const handleSaveEdit = async (taskId) => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/api/tasks/${taskId}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            task: taskEditValue,
-            start_time: formatDateForDatabase(startTimeEdit),
-            end_time: formatDateForDatabase(endTimeEdit),
-          }),
-        }
-      );
-      if (!response.ok) throw new Error("Failed to update task");
-
+      await fetchData(`/tasks/${taskId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          task: taskEditValue,
+          start_time: formatDateForDatabase(startTimeEdit),
+          end_time: formatDateForDatabase(endTimeEdit),
+        }),
+      });
       setTasks(
         tasks.map((task) =>
           task.id === taskId
@@ -208,7 +166,7 @@ function MiddleContainer({ selectedList }) {
                 type="checkbox"
                 id={`task-${task.id}`}
                 className="main-content__task--checkbox"
-                checked={task.is_completed === 1} 
+                checked={task.is_completed === 1}
                 onChange={() => handleToggleComplete(task.id)}
               />
               {editTaskId === task.id ? (
@@ -280,8 +238,7 @@ function MiddleContainer({ selectedList }) {
               )}
             </div>
           ))
-        ) :selectedList.id ?  (
-
+        ) : selectedList.id ? (
           <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>
         ) : (
           <div className="main-content__select--list">
@@ -289,7 +246,7 @@ function MiddleContainer({ selectedList }) {
           </div>
         )}
       </div>
-       <DeleteModal
+      <DeleteModal
         isOpen={deleteModalOpen}
         onClose={handleCloseDeleteModal}
         onConfirm={handleConfirmDelete}
