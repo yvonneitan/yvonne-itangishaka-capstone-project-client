@@ -25,12 +25,13 @@ function ListsContainer({ showForm }) {
   const [editedListName, setEditedListName] = useState("");
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [listToDelete, setListToDelete] = useState(null);
-  const [originalListName, setOriginalListName] = useState(""); 
+  const [originalListName, setOriginalListName] = useState("");
+  const [tasks,setTasks]=useState("");
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const userData = await fetchData("/users/1"); 
+        const userData = await fetchData("/users/1");
         setUser(userData);
         await getTaskLists(userData.id);
       } catch (error) {
@@ -40,10 +41,10 @@ function ListsContainer({ showForm }) {
         setLoading(false);
       }
     };
-  
+
     getUser();
   }, []);
-  
+
   const getTaskLists = async (userId) => {
     try {
       const data = await fetchData(`/lists/task-lists?userId=${userId}`);
@@ -68,36 +69,36 @@ function ListsContainer({ showForm }) {
     setDeleteModalOpen(false);
     setListToDelete(null);
   };
-  
+
   const handleConfirmDelete = async () => {
     const idToDelete = Number(listToDelete);
     try {
       await fetchData(`/lists/task-lists/${idToDelete}`, {
         method: "DELETE",
       });
-      
+
       await getTaskLists(user.id);
       handleCloseDeleteModal();
     } catch (error) {
       console.error("Error deleting task:", error);
     }
   };
-  
+
   const handleCreateNewList = async () => {
     if (!newListName.trim()) {
       setInputError(true);
       return;
     }
-  
+
     try {
       await fetchData("/lists/task-lists", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: newListName, userId: user.id }),
       });
-  
+
       await getTaskLists(user.id);
-  
+
       setNewListName("");
       setInputError("");
       setShowInput(false);
@@ -106,7 +107,7 @@ function ListsContainer({ showForm }) {
       console.error("Error creating new list:", error);
     }
   };
-  
+
   const handleShowInput = () => {
     setShowInput(true);
     setShowCreateButton(false);
@@ -132,38 +133,38 @@ function ListsContainer({ showForm }) {
   const handleEditList = (listId, listName) => {
     setEditingListId(listId);
     setEditedListName(listName);
-    setOriginalListName(listName); 
+    setOriginalListName(listName);
   };
 
   const handleEditChange = (e) => setEditedListName(e.target.value);
 
-  const handleCancelEdit = () => {  
-    setEditingListId(null);      
+  const handleCancelEdit = () => {
+    setEditingListId(null);
     setEditedListName(originalListName);
-    setInputError(false);        
-};
+    setInputError(false);
+  };
   const handleUpdateList = async () => {
     if (!editedListName.trim()) {
       setInputError(true);
       return;
     }
-  
+
     if (editedListName === originalListName) {
       handleCancelEdit();
       return;
     }
-  
+
     try {
       await fetchData(`/lists/task-lists/${editingListId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: editedListName }),
       });
-  
+
       await getTaskLists(user.id);
       setEditingListId(null);
       setEditedListName("");
-      setOriginalListName(""); 
+      setOriginalListName("");
     } catch (error) {
       console.error("Error updating the list:", error);
     }
@@ -171,7 +172,7 @@ function ListsContainer({ showForm }) {
 
   const handleCreateNewTask = async (e) => {
     e.preventDefault();
-    
+
     const newTask = {
       task: taskName,
       start_time: startTime,
@@ -179,7 +180,7 @@ function ListsContainer({ showForm }) {
       list_id: selectedList,
       user_id: user.id,
     };
-  
+
     try {
       const result = await fetchData("/tasks", {
         method: "POST",
@@ -188,9 +189,7 @@ function ListsContainer({ showForm }) {
         },
         body: JSON.stringify(newTask),
       });
-  
-      console.log("New task ID:", result.taskId);
-      console.log("Result", result);
+
   
       await getTaskLists(user.id);
       handleCancelTask();
@@ -198,6 +197,7 @@ function ListsContainer({ showForm }) {
       console.error("Error creating new task:", error);
     }
   };
+
   
   if (loading) {
     return <div className="sidebar">Loading...</div>;
