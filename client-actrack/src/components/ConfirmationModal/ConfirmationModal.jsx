@@ -1,5 +1,5 @@
 import React from 'react';
-import './ConfirmationModal.scss'; // Create a corresponding SCSS file for styles
+import './ConfirmationModal.scss';
 
 const ConfirmationModal = ({ isOpen, onClose, onConfirm, taskName }) => {
   if (!isOpen) return null;
