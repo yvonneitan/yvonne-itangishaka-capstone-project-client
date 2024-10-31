@@ -28,6 +28,9 @@ function ListsContainer({ showForm }) {
   const [originalListName, setOriginalListName] = useState("");
   const [tasks,setTasks]=useState("");
 
+  const currentDate = new Date().toISOString().slice(0, -8); 
+  const isPastDate = (date) => new Date(date) < new Date();
+
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -198,7 +201,24 @@ function ListsContainer({ showForm }) {
     }
   };
 
-  
+  // Assuming you have a way to fetch and set tasks associated with lists
+const handleToggleTaskCompletion = async (taskId, listId) => {
+  // Here you would typically send a request to update the task in your backend
+  try {
+    await fetchData(`/tasks/${taskId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ completed: true }), // or toggle between true/false
+    });
+
+    // Fetch the updated task lists again to refresh counts
+    await getTaskLists(user.id);
+  } catch (error) {
+    console.error("Error updating task completion status:", error);
+  }
+};
   if (loading) {
     return <div className="sidebar">Loading...</div>;
   }
@@ -355,6 +375,7 @@ function ListsContainer({ showForm }) {
               id="start-time"
               className="task-form__input"
               value={startTime}
+              min={currentDate}
               onChange={(e) => setStartTime(e.target.value)}
               required
             />
@@ -367,6 +388,8 @@ function ListsContainer({ showForm }) {
               id="end-time"
               className="task-form__input"
               value={endTime}
+              min={startTime || currentDate}
+
               onChange={(e) => setEndTime(e.target.value)}
               required
             />
@@ -381,7 +404,7 @@ function ListsContainer({ showForm }) {
               onChange={(e) => setSelectedList(e.target.value)}
               required
             >
-              <option value="" disabled>
+              <option value="">
                 Select a list
               </option>
               {taskLists.map((list) => (
