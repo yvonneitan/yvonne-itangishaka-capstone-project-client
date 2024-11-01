@@ -33,7 +33,6 @@
     background-color: transparent;
     list-style-type: none;
     margin-right: 1rem;
-    margin-left: 1rem;
     width: calc(100% - 2rem);
 
     &--item {
@@ -113,14 +112,19 @@
       border-radius: 1.5625rem;
       font-size: $font-paragraph;
       padding: 0.5rem;
-      width: 100%;
-      margin-top: 0.5rem;
+      width: 90%;
+      margin-top: 1rem;
       margin-bottom: 1rem;
+      margin-left:1.5rem;
       &:hover {
         color: $white;
         background: $background-log-button-color;
       }
     }
+  }
+  .past-date {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   &__create {
