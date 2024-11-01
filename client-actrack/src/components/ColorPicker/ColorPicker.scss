@@ -22,8 +22,8 @@
   &__choice {
     width: 2.5rem;
     height: 2.5rem;
-    border: none;
-    border-radius: 2rem;
+    border: 0.125rem solid $border-blue;
+    border-radius: 4rem;
     cursor: pointer;
     transition: transform 0.2s ease;
 

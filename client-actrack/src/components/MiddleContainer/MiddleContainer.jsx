@@ -43,15 +43,27 @@ function MiddleContainer({ selectedList }) {
     }
   };
 
-  const handleToggleComplete = async (taskId, updatedStatus) => {
+  const handleToggleComplete = async (taskId) => {
+    const task = tasks.find((task) => task.id === taskId);
+  
+    if (!task) {
+      console.error("Task not found.");
+      return;
+    }
+  
+    const updatedStatus = task.is_completed === 0 ? 1 : 0; 
+  
     try {
       const updatedTaskResponse = await fetchData(`/tasks/${taskId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ is_completed: updatedStatus ? 1 : 0 }),
+        body: JSON.stringify({ is_completed: updatedStatus }),
       });
+  
       setTasks((prevTasks) =>
-        prevTasks.map((task) => (task.id === taskId ? updatedTaskResponse : task))
+        prevTasks.map((task) =>
+          task.id === taskId ? { ...task, is_completed: updatedStatus } : task
+        )
       );
     } catch (error) {
       console.error("Error updating task completion:", error);
@@ -72,8 +84,8 @@ function MiddleContainer({ selectedList }) {
     setEndTimeEdit("");
   };
 
-  const handleOpenDeleteModal = (listId) => {
-    setTaskToDelete(listId);
+  const handleOpenDeleteModal = (taskId) => {
+    setTaskToDelete(taskId);
     setDeleteModalOpen(true);
   };
 
@@ -241,18 +253,18 @@ function MiddleContainer({ selectedList }) {
         ) : selectedList.id ? (
           <div className="main-content__error--task">{`Your "${selectedList}" List is Empty!`}</div>
         ) : (
-          <div className="main-content__select--list">
-            Select an AcTrack list to see your tasks.
-          </div>
+          <div className="main-content__error--task">Select a list to view its tasks</div>
         )}
       </div>
-      <DeleteModal
-        isOpen={deleteModalOpen}
-        onClose={handleCloseDeleteModal}
-        onConfirm={handleConfirmDelete}
-        title="Confirm Deletion"
-        message="Are you sure you want to delete this Task?"
-      />
+
+      {deleteModalOpen && (
+          <DeleteModal
+            isOpen={deleteModalOpen}
+            onClose={handleCloseDeleteModal}
+            onConfirm={handleConfirmDelete}
+            title="Confirm Deletion"
+            message="Are you sure you want to delete this Task?"/>
+      )}
     </main>
   );
 }
